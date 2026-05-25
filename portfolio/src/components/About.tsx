@@ -93,7 +93,7 @@ const AboutSection = () => {
         </div>
 
         {/* RIGHT SIDE WITH SOCIALS */}
-        <div className="flex items-center justify-between gap-8 relative">
+        <div className="flex items-stretch justify-between gap-8 relative">
           
           {/* Main Image Container */}
           <div className="flex-1 border border-emerald-500/20 rounded-[30px] p-6 bg-[#050505] relative overflow-hidden">
@@ -111,7 +111,7 @@ const AboutSection = () => {
               ))}
             </div>
 
-            {/* Image */}
+            {/* Image (Invalid Base URL error එක මඟහරවා නිවැරදි කරන ලදි) */}
             <img
               src="/Images/about.jpeg"
               alt="profile"
@@ -138,10 +138,10 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* SOCIAL MEDIA SIDEBAR (Image එකේ තියෙන විදියටම) */}
-          <div className="flex flex-col items-center gap-6 self-start pt-12">
+          {/* SOCIAL MEDIA SIDEBAR */}
+          <div className="flex flex-col items-center justify-center gap-6 self-center">
             {/* Vertical Text */}
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-gray-400 [writing-mode:vertical-lr] mb-4">
+            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-gray-400 [writing-mode:vertical-lr] mb-2">
               FOLLOW ME ON
             </span>
             
@@ -155,7 +155,6 @@ const AboutSection = () => {
 
             {/* Dribbble */}
             <a href="#" className="w-12 h-12 rounded-full bg-[#ea4c89] flex items-center justify-center hover:scale-110 transition">
-              {/* Custom Dribbble Icon using SVG */}
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.118-10.424c-.298-.112-2.613-.815-5.277-.373.107.292.21.589.305.889.3.935.553 1.916.749 2.925 2.451-1.071 3.961-2.617 4.223-3.441zm-1.63 4.908c-.208.539-1.4 1.832-3.414 2.766-.15-.794-.372-1.579-.659-2.348-.1-.269-.206-.535-.317-.798 2.503-.435 4.18.239 4.39.38zm-8.212 4.23c2.449 0 4.673-.918 6.357-2.425-.19-.877-.42-1.74-.693-2.57-.091-.274-.188-.546-.291-.815-2.884.778-5.696.697-5.918.687-.015.342-.021.683-.016 1.023.016 1.071.109 2.122.274 3.141.424.039.852.059 1.287.059zm-2.886-.777c-.161-.926-.252-1.884-.271-2.859-.001-.064 0-.127.002-.191-2.288.106-4.636-.554-4.821-.61-.17.659-.263 1.35-.263 2.062 0 3.327 2.158 6.151 5.153 6.643zm-5.184-8.868c.218.058 2.148.552 4.606.324.039-.462.086-.934.143-1.413.076-.642.176-1.289.299-1.93-2.73-.787-4.887-.133-5.08-.069-.125.434-.189.891-.189 1.362 0 .611.11 1.2.311 1.748zm.802-3.791c.217-.061 1.942-.519 4.41.168.411-.849.886-1.688 1.418-2.5-1.921-.77-3.771-.564-3.953-.541-1.077.67-1.956 1.597-2.585 2.684zm6.052-3.32c.162-.016.326-.024.492-.024 1.761-.001 3.394.555 4.733 1.498-.363.666-.757 1.365-1.173 2.091-.497-.197-1.037-.374-1.614-.528-.485-.129-.988-.228-1.503-.298-.124.636-.231 1.272-.317 1.905-.044.331-.081.659-.111.984.14.004.288.006.444.006.516 0 1.053-.016 1.606-.05 2.766-.169 5.253.374 5.568.448.012-.132.022-.266.026-.401.03-1.01-.131-2.036-.481-3.033-.189-.538-.431-1.057-.723-1.55-.386.136-1.127.368-2.188.368a5.53 5.53 0 0 1-1.085-.108c-.732-.82-1.507-1.564-2.31-2.222l-.121-.09z"/>
               </svg>

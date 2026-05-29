@@ -1,9 +1,10 @@
  import Navbar from './components/Navbar'
  import Hero from './components/Hero'
  import About from './components/About'
+ import Skills from './components/Skills'
 // import Service from './components/Service'
 // import Blog from './components/Blog'
-// import Skills from './components/Skills'
+
 // import Project from './components/Project'
 // import Education from './components/Education'
 // import Achievements from './components/Achievements'
@@ -21,6 +22,7 @@ export default function App(): JSX.Element {
         <>
           <Hero />
           <About />
+          <Skills />
         </>
       </main>
     </div>

@@ -2,7 +2,7 @@
  import Hero from './components/Hero'
  import About from './components/About'
  import Skills from './components/Skills'
-// import Service from './components/Service'
+ import Service from './components/Service'
 // import Blog from './components/Blog'
 
 // import Project from './components/Project'
@@ -22,6 +22,7 @@ export default function App(): JSX.Element {
         <>
           <Hero />
           <About />
+          <Service />
           <Skills />
         </>
       </main>

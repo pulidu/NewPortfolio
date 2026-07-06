@@ -9,66 +9,66 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="min-h-screen bg-[#faf9f6] text-gray-900 px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-20 flex items-center">
+    <section className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-20 flex items-center">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
         
         {/* LEFT SIDE (Content) - Takes 12 cols on mobile, 7 cols on large screens */}
         <div className="lg:col-span-7 order-2 lg:order-1">
           {/* Badge */}
-          <button className="border border-emerald-600/30 bg-emerald-50 text-emerald-700 px-5 py-2 rounded-full text-xs sm:text-sm tracking-wide mb-6 md:mb-8 pointer-events-none">
+          <button className="border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 px-5 py-2 rounded-full text-xs sm:text-sm tracking-wide mb-6 md:mb-8 pointer-events-none">
             • ABOUT ME
           </button>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 md:mb-8 text-gray-900">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 md:mb-8">
             Building Digital Solutions
             <br />
             That{" "}
-            <span className="text-emerald-600">
+            <span className="text-emerald-400">
               Make an Impact.
             </span>
           </h1>
 
           {/* Paragraph */}
-          <p className="text-gray-600 text-base sm:text-lg leading-8 md:leading-9 max-w-2xl mb-8 md:mb-10">
+          <p className="text-gray-300 text-base sm:text-lg leading-8 md:leading-9 max-w-2xl mb-8 md:mb-10">
             I'm a full-stack software engineer with a passion for building
             scalable, user-focused web applications. I enjoy turning complex
             problems into simple, beautiful, and intuitive solutions.
             <br />
-            <span className="text-emerald-700 font-medium">Always learning, always building.</span>
+            <span className="text-emerald-400/80 font-medium">Always learning, always building.</span>
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-12">
             {/* Card 1 */}
-            <div className="bg-white border border-emerald-200 rounded-2xl p-5 hover:border-emerald-400 shadow-sm hover:shadow-md transition duration-300">
-              <div className="bg-emerald-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-                <CalendarDays className="text-emerald-600" size={24} />
+            <div className="bg-[#0b0b0b] border border-emerald-500/10 rounded-2xl p-5 hover:border-emerald-400/30 transition duration-300">
+              <div className="bg-emerald-500/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <CalendarDays className="text-emerald-400" size={24} />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">1+</h2>
-              <p className="text-gray-500 text-xs sm:text-sm mt-1">
+              <h2 className="text-2xl sm:text-3xl font-bold">1+</h2>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">
                 Years Experience
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white border border-emerald-200 rounded-2xl p-5 hover:border-emerald-400 shadow-sm hover:shadow-md transition duration-300">
-              <div className="bg-emerald-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-                <Code2 className="text-emerald-600" size={24} />
+            <div className="bg-[#0b0b0b] border border-emerald-500/10 rounded-2xl p-5 hover:border-emerald-400/30 transition duration-300">
+              <div className="bg-emerald-500/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <Code2 className="text-emerald-400" size={24} />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">20+</h2>
-              <p className="text-gray-500 text-xs sm:text-sm mt-1">
+              <h2 className="text-2xl sm:text-3xl font-bold">20+</h2>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">
                 Projects Completed
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white border border-emerald-200 rounded-2xl p-5 hover:border-emerald-400 shadow-sm hover:shadow-md transition duration-300">
-              <div className="bg-emerald-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-                <Users className="text-emerald-600" size={24} />
+            <div className="bg-[#0b0b0b] border border-emerald-500/10 rounded-2xl p-5 hover:border-emerald-400/30 transition duration-300">
+              <div className="bg-emerald-500/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <Users className="text-emerald-400" size={24} />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">10+</h2>
-              <p className="text-gray-500 text-xs sm:text-sm mt-1">
+              <h2 className="text-2xl sm:text-3xl font-bold">10+</h2>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">
                 Happy Clients
               </p>
             </div>
@@ -76,12 +76,12 @@ const AboutSection = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-2xl flex items-center justify-center gap-3 transition duration-300 w-full sm:w-auto">
+            <button className="bg-emerald-400 hover:bg-emerald-300 text-black font-semibold px-8 py-4 rounded-2xl flex items-center justify-center gap-3 transition duration-300 w-full sm:w-auto">
               Let’s Build Something
               <ArrowRight size={20} />
             </button>
 
-            <button className="flex items-center justify-center gap-3 text-gray-700 hover:text-emerald-600 transition duration-300 py-3 sm:py-0">
+            <button className="flex items-center justify-center gap-3 text-white hover:text-emerald-400 transition duration-300 py-3 sm:py-0">
               <Download size={20} />
               Download CV
             </button>
@@ -92,17 +92,17 @@ const AboutSection = () => {
         <div className="lg:col-span-5 flex flex-col md:flex-row lg:flex-row items-center justify-between gap-6 md:gap-8 order-1 lg:order-2 w-full">
           
           {/* Main Image Container */}
-          <div className="flex-1 w-full border border-emerald-200 rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 bg-white relative overflow-hidden shadow-sm">
+          <div className="flex-1 w-full border border-emerald-500/20 rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 bg-[#050505] relative overflow-hidden">
             
             {/* Glow effect */}
-            <div className="absolute top-10 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-emerald-400/30 blur-[100px] sm:blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-10 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-emerald-400/20 blur-[100px] sm:blur-[120px] rounded-full pointer-events-none"></div>
 
             {/* Dots Grid */}
             <div className="absolute top-6 left-6 sm:top-10 sm:left-10 grid grid-cols-8 gap-2 sm:gap-3 opacity-20 pointer-events-none">
               {[...Array(40)].map((_, i) => (
                 <span
                   key={i}
-                  className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-emerald-600 rounded-full"
+                  className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-emerald-400 rounded-full"
                 ></span>
               ))}
             </div>
@@ -115,17 +115,17 @@ const AboutSection = () => {
             />
 
             {/* Bottom Floating Card */}
-            <div className="relative z-20 mt-4 sm:mt-6 border border-emerald-200 bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 flex items-center justify-between gap-3 shadow-sm">
+            <div className="relative z-20 mt-4 sm:mt-6 border border-emerald-500/20 bg-black/70 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 sm:gap-4">
-                <div className="bg-emerald-50 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Target className="text-emerald-600" size={20} />
+                <div className="bg-emerald-500/10 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Target className="text-emerald-400" size={20} />
                 </div>
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">
                   Passionate about clean code, user experience, and smart solutions.
                 </p>
               </div>
-              <div className="bg-emerald-600 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 hidden sm:flex">
-                <Users className="text-white" size={20} />
+              <div className="bg-emerald-400 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 hidden sm:flex">
+                <Users className="text-black" size={20} />
               </div>
             </div>
           </div>
@@ -133,13 +133,13 @@ const AboutSection = () => {
           {/* SOCIAL MEDIA SIDEBAR / ROW (Adapts automatically) */}
           <div className="flex flex-row md:flex-col lg:flex-col items-center justify-center gap-4 sm:gap-5 w-full md:w-auto py-2">
             {/* Label - Hidden on small mobile devices, visible as row on tablet, vertical on desktop */}
-            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-gray-500 md:[writing-mode:vertical-lr] hidden sm:inline">
+            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-gray-400 md:[writing-mode:vertical-lr] hidden sm:inline">
               FOLLOW ME
             </span>
             
             {/* Divider line - Hidden on mobile */}
-            <div className="hidden md:block w-[1px] h-10 bg-gray-300"></div>
-            <div className="block md:hidden h-[1px] w-8 bg-gray-300 hidden sm:block"></div>
+            <div className="hidden md:block w-[1px] h-10 bg-gray-800"></div>
+            <div className="block md:hidden h-[1px] w-8 bg-gray-800 hidden sm:block"></div>
 
             {/* Social Buttons (Sizes and padding adjusted for mobile touch) */}
             <a href="#" aria-label="Behance" className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1769ff] flex items-center justify-center font-bold text-xs sm:text-sm text-white hover:scale-110 active:scale-95 transition duration-200">
@@ -171,5 +171,7 @@ const AboutSection = () => {
   );
 };
 
-
 export default AboutSection;
+
+
+

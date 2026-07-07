@@ -5,8 +5,8 @@ interface LoadingScreenProps {
   onFinish: () => void
 }
 
-const particles = Array.from({ length: 20 }, () => ({
-  id: crypto.randomUUID(),
+const particles = Array.from({ length: 20 }, (_, i) => ({
+  id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
   size: Math.random() * 2.5 + 0.5,

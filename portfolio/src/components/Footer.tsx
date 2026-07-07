@@ -20,15 +20,6 @@ const TwitterIcon = () => (
   </svg>
 );
 
-const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
-];
-
 const socialLinks = [
   { icon: GithubIcon, label: 'GitHub', href: '#' },
   { icon: LinkedInIcon, label: 'LinkedIn', href: '#' },
@@ -44,60 +35,34 @@ const Footer = memo(function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-8 xl:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden" aria-label="Site footer">
+    <footer className="relative bg-black pt-10 md:pt-12 lg:pt-14 pb-6 xl:pb-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden" aria-label="Site footer">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl lg:max-w-6xl xl:max-w-8xl h-[1px] bg-gradient-to-r from-transparent via-[#00e5c0]/30 to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          <div className="md:col-span-2">
-            <a href="#home" className="text-2xl font-black tracking-[0.15em] text-white/90">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div>
+            <a href="#home" className="text-xl font-black tracking-[0.15em] text-white/90">
               PULINDU<span className="text-[#00e5c0]">.</span>
             </a>
-            <p className="text-slate-500 text-sm leading-relaxed mt-4 max-w-sm">
+            <p className="text-slate-500 text-sm leading-relaxed mt-2 max-w-sm">
               Building scalable digital experiences with passion. Full-stack developer crafting modern web applications.
             </p>
-            <div className="flex items-center gap-3 mt-5">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  aria-label={link.label}
-                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-500 hover:text-[#00e5c0] hover:border-[#00e5c0]/30 hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <link.icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
-
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Navigation</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-slate-500 text-sm hover:text-[#00e5c0] transition-colors duration-300 relative inline-block group"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-[#00e5c0] transition-all duration-300 group-hover:w-full" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Contact</h4>
-            <ul className="space-y-2.5 text-sm text-slate-500">
-              <li>hello@pulindu.dev</li>
-              <li>Colombo, Sri Lanka</li>
-              <li>Available for projects</li>
-            </ul>
+          <div className="flex items-center gap-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                aria-label={link.label}
+                className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-500 hover:text-[#00e5c0] hover:border-[#00e5c0]/30 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <link.icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="relative pt-8">
+        <div className="relative pt-6">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">

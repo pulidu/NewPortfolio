@@ -1,6 +1,12 @@
-import { memo, useState, useMemo, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { BadgeCheck, Download, ExternalLink, Award } from 'lucide-react';
+import { memo, useRef, useState, useCallback } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import {
+  ExternalLink,
+  Award,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
 interface Certification {
   id: string;
@@ -9,7 +15,6 @@ interface Certification {
   issueDate: string;
   credentialId: string;
   image: string;
-  category: 'programming' | 'cloud' | 'design' | 'database' | 'other';
 }
 
 const certifications: Certification[] = [
@@ -19,8 +24,8 @@ const certifications: Certification[] = [
     issuer: 'Meta (Coursera)',
     issueDate: 'Mar 2025',
     credentialId: 'ABC123XYZ',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80',
-    category: 'programming',
+    image:
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80',
   },
   {
     id: '2',
@@ -28,8 +33,8 @@ const certifications: Certification[] = [
     issuer: 'Amazon Web Services',
     issueDate: 'Jan 2025',
     credentialId: 'AWS-CP-2025-001',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80',
-    category: 'cloud',
+    image:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80',
   },
   {
     id: '3',
@@ -37,8 +42,8 @@ const certifications: Certification[] = [
     issuer: 'Google (Coursera)',
     issueDate: 'Nov 2024',
     credentialId: 'GUX-2024-567',
-    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&q=80',
-    category: 'design',
+    image:
+      'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&q=80',
   },
   {
     id: '4',
@@ -46,8 +51,8 @@ const certifications: Certification[] = [
     issuer: 'MongoDB University',
     issueDate: 'Sep 2024',
     credentialId: 'MDB-DEV-890',
-    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&q=80',
-    category: 'database',
+    image:
+      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&q=80',
   },
   {
     id: '5',
@@ -55,27 +60,10 @@ const certifications: Certification[] = [
     issuer: 'freeCodeCamp',
     issueDate: 'Jul 2024',
     credentialId: 'FCC-JS-2024-123',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80',
-    category: 'programming',
+    image:
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80',
   },
 ];
-
-const filterOptions = [
-  { value: 'all', label: 'All' },
-  { value: 'programming', label: 'Programming' },
-  { value: 'cloud', label: 'Cloud' },
-  { value: 'design', label: 'Design' },
-  { value: 'database', label: 'Database' },
-  { value: 'other', label: 'Other' },
-] as const;
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
-  },
-};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -86,24 +74,31 @@ const itemVariants = {
   },
 };
 
-const CertCard = memo(function CertCard({ cert, index }: { cert: Certification; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+const CertCard = memo(function CertCard({
+  cert,
+  index,
+  onSelect,
+}: {
+  cert: Certification;
+  index: number;
+  onSelect: () => void;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.div
+    <motion.button
       variants={itemVariants}
-      className="group relative"
-      ref={cardRef}
+      className="group relative flex-shrink-0 w-[280px] sm:w-[300px] text-left"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onSelect}
     >
       <div
-        className={[
-          'relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-lg',
-          'border border-white/[0.06] transition-all duration-500',
-          hovered ? '-translate-y-2 shadow-[0_0_30px_rgba(0,229,192,0.12)] border-[#00e5c0]/30' : '',
-        ].join(' ')}
+        className={`relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] transition-all duration-500 ${
+          hovered
+            ? '-translate-y-2 shadow-[0_0_30px_rgba(0,229,192,0.12)] border-[#00e5c0]/30'
+            : ''
+        }`}
       >
         <div className="relative h-40 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
@@ -111,10 +106,9 @@ const CertCard = memo(function CertCard({ cert, index }: { cert: Certification; 
             src={cert.image}
             alt={cert.title}
             loading="lazy"
-            className={[
-              'w-full h-full object-cover transition-all duration-700',
-              hovered ? 'scale-110' : 'scale-100',
-            ].join(' ')}
+            className={`w-full h-full object-cover transition-all duration-700 ${
+              hovered ? 'scale-110' : 'scale-100'
+            }`}
           />
           <div className="absolute top-3 right-3 z-20">
             <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
@@ -124,62 +118,173 @@ const CertCard = memo(function CertCard({ cert, index }: { cert: Certification; 
         </div>
 
         <div className="p-5">
-          <h3 className="text-white font-semibold text-sm mb-1 leading-snug">{cert.title}</h3>
-          <p className="text-[#00e5c0] text-xs font-medium mb-3">{cert.issuer}</p>
-
-          <div className="flex items-center justify-between text-[10px] text-slate-500 mb-4 pb-3 border-b border-white/[0.06]">
+          <h3 className="text-white font-semibold text-sm mb-1 leading-snug">
+            {cert.title}
+          </h3>
+          <p className="text-[#00e5c0] text-xs font-medium mb-3">
+            {cert.issuer}
+          </p>
+          <div className="flex items-center justify-between text-[10px] text-slate-500 pt-3 border-t border-white/[0.06]">
             <span>Issued {cert.issueDate}</span>
-            <span className="truncate ml-2 max-w-[140px]">ID: {cert.credentialId}</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <a
-              href="#"
-              className={[
-                'flex items-center gap-1.5 text-[11px] font-medium px-3 py-2 rounded-lg',
-                'bg-[#00e5c0]/10 text-[#00e5c0] hover:bg-[#00e5c0]/20 transition-all duration-300',
-              ].join(' ')}
-            >
-              <ExternalLink className="w-3 h-3" />
-              Verify
-            </a>
-            <a
-              href="#"
-              className={[
-                'flex items-center gap-1.5 text-[11px] font-medium px-3 py-2 rounded-lg',
-                'text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all duration-300',
-              ].join(' ')}
-            >
-              <Download className="w-3 h-3" />
-              PDF
-            </a>
+            <span className="truncate ml-2 max-w-[140px]">
+              ID: {cert.credentialId}
+            </span>
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.button>
   );
 });
 
+function CertViewer({
+  certs,
+  initialIndex,
+  onClose,
+}: {
+  certs: Certification[];
+  initialIndex: number;
+  onClose: () => void;
+}) {
+  const [index, setIndex] = useState(initialIndex);
+  const cert = certs[index];
+
+  const goPrev = useCallback(() => {
+    setIndex((i) => (i > 0 ? i - 1 : certs.length - 1));
+  }, [certs.length]);
+
+  const goNext = useCallback(() => {
+    setIndex((i) => (i < certs.length - 1 ? i + 1 : 0));
+  }, [certs.length]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div
+        className="absolute inset-0 bg-black/80 backdrop-blur-md"
+        onClick={onClose}
+      />
+
+      <motion.div
+        className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col"
+        initial={{ scale: 0.92, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.92, opacity: 0 }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 sm:right-2 w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.12] transition-all duration-300 z-20"
+        >
+          <X className="w-4 h-4 text-gray-400" />
+        </button>
+
+        {/* Card */}
+        <div className="bg-[#0B1016] border border-[#1D2733] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+          {/* Image */}
+          <div className="relative aspect-[16/10] sm:aspect-[16/9] bg-black">
+            <img
+              src={cert.image}
+              alt={cert.title}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Details bar */}
+          <div className="p-5 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
+                  {cert.title}
+                </h3>
+                <p className="text-[#00e5c0] text-sm font-medium mt-0.5">
+                  {cert.issuer}
+                </p>
+              </div>
+              <div className="flex items-center gap-3 flex-shrink-0">
+                <span className="text-[11px] text-slate-500">
+                  Issued {cert.issueDate}
+                </span>
+                <span className="w-px h-4 bg-white/[0.08]" />
+                <span className="text-[11px] text-slate-500 truncate max-w-[130px]">
+                  {cert.credentialId}
+                </span>
+                <a
+                  href="#"
+                  className="inline-flex items-center gap-1 text-[11px] font-medium px-3 py-1.5 rounded-lg bg-[#00e5c0]/10 text-[#00e5c0] hover:bg-[#00e5c0]/20 transition-all duration-300"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Verify
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-center gap-4 mt-5">
+          <button
+            onClick={goPrev}
+            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black transition-all duration-300 group"
+          >
+            <ChevronLeft className="w-4 h-4 text-gray-400 group-hover:text-black" />
+          </button>
+
+          <span className="text-xs text-slate-500 tabular-nums">
+            {index + 1} / {certs.length}
+          </span>
+
+          <button
+            onClick={goNext}
+            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black transition-all duration-300 group"
+          >
+            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-black" />
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 const CertificationsSection = memo(function CertificationsSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [filter, setFilter] = useState('all');
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const filtered = useMemo(
-    () => filter === 'all' ? certifications : certifications.filter(c => c.category === filter),
-    [filter],
-  );
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }, []);
+
+  const scroll = useCallback((dir: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.7;
+    el.scrollBy({
+      left: dir === 'left' ? -amount : amount,
+      behavior: 'smooth',
+    });
+  }, []);
 
   return (
     <section
       id="certifications"
       ref={sectionRef}
       className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
-      aria-label="Certifications"
     >
       <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-[#00e5c0]/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
         <motion.div
           className="flex flex-col items-center text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -188,51 +293,84 @@ const CertificationsSection = memo(function CertificationsSection() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-[#00e5c0]/30 bg-[#00e5c0]/10 px-4 py-1.5 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0]" />
-            <span className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">Credentials</span>
+            <span className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">
+              Credentials
+            </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Certifications{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">& Awards</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">
+              & Awards
+            </span>
           </h2>
           <p className="text-slate-400 text-base max-w-lg">
-            Professional certifications and credentials that validate my expertise.
+            Professional certifications and credentials that validate my
+            expertise.
           </p>
         </motion.div>
 
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-10"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {filterOptions.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => setFilter(opt.value)}
-              className={[
-                'px-4 py-2 text-xs font-semibold tracking-wider uppercase rounded-full border transition-all duration-300',
-                filter === opt.value
-                  ? 'bg-[#00e5c0]/10 border-[#00e5c0]/40 text-[#00e5c0]'
-                  : 'bg-transparent border-white/[0.06] text-slate-400 hover:text-slate-200 hover:border-white/[0.15]',
-              ].join(' ')}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </motion.div>
+        {/* Carousel */}
+        <div className="relative group/carousel">
+          {/* Left arrow */}
+          <button
+            onClick={() => scroll('left')}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black ${
+              canScrollLeft
+                ? 'opacity-100 pointer-events-auto'
+                : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            <ChevronLeft className="w-4 h-4 text-gray-400 group-hover/carousel:hover:text-black" />
+          </button>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          key={filter}
-        >
-          {filtered.map((cert, i) => (
-            <CertCard key={cert.id} cert={cert} index={i} />
-          ))}
-        </motion.div>
+          {/* Scrollable container */}
+          <div
+            ref={scrollRef}
+            onScroll={updateScrollState}
+            className="flex gap-5 overflow-x-auto scroll-smooth pb-4"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            <style>{`
+              div::-webkit-scrollbar { display: none; }
+            `}</style>
+            {certifications.map((cert, i) => (
+              <CertCard
+                key={cert.id}
+                cert={cert}
+                index={i}
+                onSelect={() => setViewerIndex(i)}
+              />
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => scroll('right')}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black ${
+              canScrollRight
+                ? 'opacity-100 pointer-events-auto'
+                : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            <ChevronRight className="w-4 h-4 text-gray-400 group-hover/carousel:hover:text-black" />
+          </button>
+        </div>
       </div>
+
+      {/* Viewer modal */}
+      <AnimatePresence>
+        {viewerIndex !== null && (
+          <CertViewer
+            certs={certifications}
+            initialIndex={viewerIndex}
+            onClose={() => setViewerIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 });

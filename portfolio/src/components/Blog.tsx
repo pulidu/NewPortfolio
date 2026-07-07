@@ -1,6 +1,6 @@
 import { memo, useState, useMemo, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Search, Clock, Calendar, ArrowRight, Tag, BookOpen } from 'lucide-react';
+import { Clock, Calendar, ArrowRight, Tag, BookOpen } from 'lucide-react';
 
 interface BlogPost {
   id: string;
@@ -53,8 +53,6 @@ const blogPosts: BlogPost[] = [
     slug: 'nodejs-express-guide',
   },
 ];
-
-const allCategories = ['All', 'Development', 'CSS', 'Backend', 'Design'];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -151,23 +149,6 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
 const BlogSection = memo(function BlogSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [search, setSearch] = useState('');
-  const [activeCat, setActiveCat] = useState('All');
-
-  const filtered = useMemo(() => {
-    let result = blogPosts;
-    if (activeCat !== 'All') result = result.filter(p => p.category === activeCat);
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      result = result.filter(p =>
-        p.title.toLowerCase().includes(q) ||
-        p.excerpt.toLowerCase().includes(q) ||
-        p.tags.some(t => t.toLowerCase().includes(q))
-      );
-    }
-    return result;
-  }, [search, activeCat]);
-
   const featured = useMemo(() => blogPosts.find(p => p.featured), []);
 
   return (
@@ -199,42 +180,9 @@ const BlogSection = memo(function BlogSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          className="flex flex-col sm:flex-row items-center gap-4 mb-8"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="relative w-full sm:w-72">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-sm bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:border-[#00e5c0]/40 focus:shadow-[0_0_15px_rgba(0,229,192,0.08)] transition-all duration-300"
-              aria-label="Search articles"
-            />
-          </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {allCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCat(cat)}
-                className={[
-                  'px-3 py-1.5 text-[11px] font-semibold tracking-wider uppercase rounded-full border transition-all duration-300',
-                  activeCat === cat
-                    ? 'bg-[#00e5c0]/10 border-[#00e5c0]/40 text-[#00e5c0]'
-                    : 'bg-transparent border-white/[0.06] text-slate-400 hover:text-slate-200',
-                ].join(' ')}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </motion.div>
 
-        {featured && search === '' && activeCat === 'All' && (
+
+        {featured && (
           <motion.div
             className="mb-10"
             initial={{ opacity: 0, y: 20 }}
@@ -273,18 +221,34 @@ const BlogSection = memo(function BlogSection() {
           </motion.div>
         )}
 
-        {filtered.length > 0 ? (
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            key={`${search}-${activeCat}`}
-          >
-            {filtered.filter(p => !p.featured || search !== '' || activeCat !== 'All').map((post, i) => (
-              <BlogCard key={post.id} post={post} index={i} />
-            ))}
-          </motion.div>
+        {blogPosts.length > 0 ? (
+          <>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+            >
+              {blogPosts.filter(p => !p.featured).map((post, i) => (
+                <BlogCard key={post.id} post={post} index={i} />
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="flex justify-center mt-10"
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.03] border border-white/[0.08] text-sm font-medium text-slate-300 hover:text-white hover:border-[#00e5c0]/40 hover:bg-[#00e5c0]/5 transition-all duration-300 group"
+              >
+                View All Articles
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </motion.div>
+          </>
         ) : (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

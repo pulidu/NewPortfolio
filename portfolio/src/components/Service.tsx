@@ -76,27 +76,9 @@ const ServiceCard = memo(function ServiceCard({ service, index }: { service: Ser
         <p className="text-slate-400 text-sm lg:text-base leading-relaxed">{service.description}</p>
       </div>
 
-      <a
-        href="#"
-        className="inline-flex items-center gap-2 text-[#00e5c0] text-sm font-medium mt-1 w-fit group/link"
-      >
-        Learn more
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          className="transition-transform duration-200 group-hover/link:translate-x-1"
-        >
-          <path
-            d="M3 8h10M9 4l4 4-4 4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
+     
+       
+  
     </motion.div>
   );
 });

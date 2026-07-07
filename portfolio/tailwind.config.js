@@ -15,6 +15,10 @@ export default {
         surface: '#0a0a0a',
         neon: '#00e5c0',
       },
+      maxWidth: {
+        '8xl': '1400px',
+        '9xl': '1600px',
+      },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },

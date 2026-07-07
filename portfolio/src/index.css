@@ -15,11 +15,34 @@
   --muted: rgba(255,255,255,0.65);
   --accent: var(--color-accent, #3b82f6);
 
-  /* Skills section */
   --neon: #00e5c0;
   --neon-glow: rgba(0, 229, 192, 0.3);
   --card-glass: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.06);
+
+  --section-py: 4rem;
+  --section-px: 1.5rem;
+}
+
+@screen md {
+  :root {
+    --section-py: 5rem;
+    --section-px: 2rem;
+  }
+}
+
+@screen lg {
+  :root {
+    --section-py: 6rem;
+    --section-px: 3rem;
+  }
+}
+
+@screen xl {
+  :root {
+    --section-py: 7rem;
+    --section-px: 4rem;
+  }
 }
 
 @layer base {

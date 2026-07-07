@@ -234,7 +234,7 @@ const SkillsSection = memo(function SkillsSection() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen bg-black text-white font-sans p-6 md:p-12 flex justify-center items-center overflow-hidden selection:bg-[#00e5c0] selection:text-black"
+      className="relative min-h-screen bg-black text-white font-sans px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28 flex justify-center items-center overflow-hidden selection:bg-[#00e5c0] selection:text-black"
       aria-label="Skills and technologies section"
     >
       <ParticlesBackground />
@@ -247,7 +247,7 @@ const SkillsSection = memo(function SkillsSection() {
         }}
       >
         <motion.div
-          className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start"
+          className="max-w-7xl xl:max-w-8xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-12 items-start"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}

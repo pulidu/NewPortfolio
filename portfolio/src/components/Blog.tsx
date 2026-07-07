@@ -174,12 +174,12 @@ const BlogSection = memo(function BlogSection() {
     <section
       id="blog"
       ref={sectionRef}
-      className="relative bg-black py-24 px-6 overflow-hidden"
+      className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       aria-label="Blog"
     >
       <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
           className="flex flex-col items-center text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

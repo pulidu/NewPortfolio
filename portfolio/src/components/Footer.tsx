@@ -44,10 +44,10 @@ const Footer = memo(function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black pt-16 pb-8 px-6 overflow-hidden" aria-label="Site footer">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-[#00e5c0]/30 to-transparent" />
+    <footer className="relative bg-black pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-8 xl:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden" aria-label="Site footer">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl lg:max-w-6xl xl:max-w-8xl h-[1px] bg-gradient-to-r from-transparent via-[#00e5c0]/30 to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
             <a href="#home" className="text-2xl font-black tracking-[0.15em] text-white/90">

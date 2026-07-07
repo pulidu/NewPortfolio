@@ -29,11 +29,11 @@ const AboutSection = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-20 flex items-center relative overflow-hidden"
+      className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28 flex items-center relative overflow-hidden"
     >
-      <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-[#00e5c0]/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-[#00e5c0]/3 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
+      <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-center">
         <motion.div
           className="lg:col-span-7 order-2 lg:order-1"
           variants={containerVariants}
@@ -42,15 +42,15 @@ const AboutSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 px-5 py-2 rounded-full text-xs sm:text-sm tracking-wide mb-6 md:mb-8 w-fit"
+            className="border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 px-5 md:px-6 py-2 rounded-full text-xs sm:text-sm tracking-wide mb-6 md:mb-8 lg:mb-10 w-fit"
           >
             • ABOUT ME
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 md:mb-8"
-            style={{ textShadow: '0 0 40px rgba(0,229,192,0.06)' }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6 md:mb-8 lg:mb-10"
+            style={{ textShadow: '0 0 60px rgba(0,229,192,0.06)' }}
           >
             Building Digital Solutions
             <br />
@@ -62,7 +62,7 @@ const AboutSection = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-gray-300 text-base sm:text-lg leading-8 md:leading-9 max-w-2xl mb-8 md:mb-10"
+            className="text-gray-300 text-base sm:text-lg lg:text-xl leading-8 md:leading-9 lg:leading-10 max-w-2xl lg:max-w-3xl mb-8 md:mb-10 lg:mb-12"
           >
             I'm a full-stack software engineer with a passion for building
             scalable, user-focused web applications. I enjoy turning complex
@@ -73,7 +73,7 @@ const AboutSection = () => {
 
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-12"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mb-10 md:mb-12 lg:mb-16"
           >
             {[
               { icon: CalendarDays, value: '1+', label: 'Years Experience' },
@@ -82,34 +82,34 @@ const AboutSection = () => {
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
-                className="bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] rounded-2xl p-5 hover:border-[#00e5c0]/30 transition-all duration-300 hover:-translate-y-1"
+                className="bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] rounded-2xl p-5 md:p-6 lg:p-7 hover:border-[#00e5c0]/30 transition-all duration-300 hover:-translate-y-1"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
               >
-                <div className="bg-[#00e5c0]/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <div className="bg-[#00e5c0]/10 w-12 h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center mb-4">
                   <stat.icon className="text-[#00e5c0]" size={24} />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold">{stat.value}</h2>
-                <p className="text-gray-400 text-xs sm:text-sm mt-1">{stat.label}</p>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{stat.value}</h2>
+                <p className="text-gray-400 text-xs sm:text-sm lg:text-base mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 lg:gap-8"
           >
             <a
               href="#contact"
-              className="bg-gradient-to-r from-[#00e5c0] to-emerald-500 hover:shadow-[0_0_25px_rgba(0,229,192,0.3)] text-black font-semibold px-8 py-4 rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 w-full sm:w-auto"
+              className="bg-gradient-to-r from-[#00e5c0] to-emerald-500 hover:shadow-[0_0_25px_rgba(0,229,192,0.3)] text-black font-semibold px-8 lg:px-10 py-4 lg:py-5 rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 w-full sm:w-auto text-sm lg:text-base"
             >
               Let's Build Something
               <ArrowRight size={20} />
             </a>
             <a
               href="#"
-              className="flex items-center justify-center gap-3 text-white hover:text-[#00e5c0] transition duration-300 py-3 sm:py-0"
+              className="flex items-center justify-center gap-3 text-white hover:text-[#00e5c0] transition duration-300 py-3 sm:py-0 text-sm lg:text-base"
             >
               <Download size={20} />
               Download CV
@@ -118,12 +118,12 @@ const AboutSection = () => {
         </motion.div>
 
         <motion.div
-          className="lg:col-span-5 flex flex-col md:flex-row lg:flex-row items-center justify-between gap-6 md:gap-8 order-1 lg:order-2 w-full"
+          className="lg:col-span-5 flex flex-col md:flex-row lg:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-10 order-1 lg:order-2 w-full"
           initial={{ opacity: 0, x: 30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="flex-1 w-full border border-[#00e5c0]/20 rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 bg-[#050505] relative overflow-hidden">
+          <div className="flex-1 w-full border border-[#00e5c0]/20 rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 lg:p-8 bg-[#050505] relative overflow-hidden">
             <div className="absolute top-10 left-10 w-48 h-48 sm:w-72 sm:h-72 bg-emerald-400/20 blur-[100px] sm:blur-[120px] rounded-full pointer-events-none" />
 
             <div className="absolute top-6 left-6 sm:top-10 sm:left-10 grid grid-cols-8 gap-2 sm:gap-3 opacity-20 pointer-events-none">

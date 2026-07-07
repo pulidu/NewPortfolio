@@ -148,12 +148,12 @@ const ContactSection = memo(function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-black py-24 px-6 overflow-hidden"
+      className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       aria-label="Contact"
     >
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-[#00e5c0]/3 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
           className="flex flex-col items-center text-center mb-14"
           initial={{ opacity: 0, y: 20 }}

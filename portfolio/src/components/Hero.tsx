@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 
@@ -22,11 +22,37 @@ const itemVariants = {
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true });
-  const reducedMotion = typeof window !== 'undefined'
-    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    : false;
+  
+  // Typewriter States
+  const fullText = "Ensuring Quality, Crafting Better Experiences_";
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const heroText = "Ensuring Quality, Crafting Better Experiences";
+  useEffect(() => {
+    const handleTyping = () => {
+      if (!isDeleting) {
+        setDisplayedText(fullText.substring(0, displayedText.length + 1));
+        
+        if (displayedText === fullText) {
+          setTimeout(() => setIsDeleting(true), 2000); // සම්පූර්ණ වැකිය වැටුණු පසු තත්පර 2ක් බලා සිටී
+          setTypingSpeed(100); // මකන වේගය
+        }
+      } else {
+        setDisplayedText(fullText.substring(0, displayedText.length - 1));
+        
+        if (displayedText === "") {
+          setIsDeleting(false);
+          setLoopNum(loopNum + 1);
+          setTypingSpeed(150); // ටයිප් වන වේගය
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, loopNum, typingSpeed]);
 
   return (
     <section
@@ -60,39 +86,15 @@ export default function HeroSection() {
           Pulindu Godage
         </motion.h1>
 
-        <motion.h3
+        <motion.h4
           variants={itemVariants}
-          className="mt-4 md:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
+          className="mt-4 md:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight min-h-[1.2em]"
         >
           <span className="bg-gradient-to-r cursor-default from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-            {heroText.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: index * 0.045,
-                  duration: 0.04,
-                  ease: "easeOut",
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-
-            <motion.span
-              className="inline-block ml-1"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{
-                duration: 0.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              _
-            </motion.span>
+            {displayedText}
           </span>
-        </motion.h3>
+          <span className="inline-block w-1 bg-cyan-400 ml-1 animate-pulse" style={{ height: '0.8em' }} />
+        </motion.h4>
 
         <motion.p
           variants={itemVariants}
@@ -111,7 +113,6 @@ export default function HeroSection() {
           >
             Let's Build Something
           </a>
-
           <a
             href="#projects"
             className="inline-flex h-12 md:h-14 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/50 px-6 md:px-8 text-sm md:text-base font-medium text-slate-300 backdrop-blur-sm transition-all duration-200 hover:border-slate-700 hover:bg-slate-900 hover:text-white"
@@ -127,10 +128,7 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <span className="text-xs font-medium tracking-widest uppercase">
-          Scroll Down
-        </span>
-
+        <span className="text-xs font-medium tracking-widest uppercase">Scroll Down</span>
         <div className="flex h-10 w-6 justify-center rounded-full border-2 border-current p-1.5">
           <div className="h-2 w-1.5 rounded-full bg-current animate-bounce" />
         </div>

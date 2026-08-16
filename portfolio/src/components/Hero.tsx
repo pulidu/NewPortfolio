@@ -63,7 +63,7 @@ export default function HeroSection() {
           className="mt-4 md:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
         >
           <span className="bg-gradient-to-r cursor-default from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-            Building Scalable Apps_
+            Crafting Seamless Digital Experiences_
           </span>
         </motion.h2>
 
@@ -71,10 +71,7 @@ export default function HeroSection() {
           variants={itemVariants}
           className="mx-auto mt-6 md:mt-8 max-w-2xl lg:max-w-3xl text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-slate-400"
         >
-         I’m a passionate QA Engineer focused on delivering reliable, high-quality software through testing, attention to detail, 
-         and continuous improvement. With experience in Front-End Development and UI/UX Design, I combine technical expertise and 
-         user-centered thinking to build seamless, intuitive, and high-performing digital experiences.
-
+         QA Engineer | Frontend Developer | UI/UX Designer. Specialized in building intuitive, high-performance interfaces and ensuring robust software quality.
         </motion.p>
 
         <motion.div

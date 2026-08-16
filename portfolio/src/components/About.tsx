@@ -64,9 +64,9 @@ const AboutSection = () => {
             variants={itemVariants}
             className="text-gray-300 text-base sm:text-lg lg:text-xl leading-8 md:leading-9 lg:leading-10 max-w-2xl lg:max-w-3xl mb-8 md:mb-10 lg:mb-12"
           >
-            I'm a full-stack software engineer with a passion for building
-            scalable, user-focused web applications. I enjoy turning complex
-            problems into simple, beautiful, and intuitive solutions.
+          I’m a passionate Software Engineer focused on Quality Assurance, Front-End Development, and UI/UX Design. 
+          I enjoy building intuitive, responsive, and reliable digital experiences by combining clean development, thoughtful design, and a strong focus on software quality. 
+          I turn complex ideas into user-friendly solutions that are both functional and visually engaging.
             <br />
             <span className="text-emerald-400/80 font-medium">Always learning, always building.</span>
           </motion.p>

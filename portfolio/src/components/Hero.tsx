@@ -71,8 +71,10 @@ export default function HeroSection() {
           variants={itemVariants}
           className="mx-auto mt-6 md:mt-8 max-w-2xl lg:max-w-3xl text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-slate-400"
         >
-          Full-stack software engineer with 1+ years of experience building
-          scalable web applications that solve real-world problems and delight users.
+         I’m a passionate QA Engineer focused on delivering reliable, high-quality software through testing, attention to detail, 
+         and continuous improvement. With experience in Front-End Development and UI/UX Design, I combine technical expertise and 
+         user-centered thinking to build seamless, intuitive, and high-performing digital experiences.
+
         </motion.p>
 
         <motion.div

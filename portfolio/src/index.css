@@ -15,8 +15,8 @@
   --muted: rgba(255,255,255,0.65);
   --accent: var(--color-accent, #3b82f6);
 
-  --neon: #00e5c0;
-  --neon-glow: rgba(0, 229, 192, 0.3);
+  --neon: #ffffff;
+  --neon-glow: rgba(255, 255, 255, 0.3);
   --card-glass: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.06);
 
@@ -72,7 +72,7 @@
   }
 
   ::selection {
-    background-color: #00e5c0;
+    background-color: #ffffff;
     color: #000;
   }
 
@@ -84,10 +84,10 @@
     background: #000;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 229, 192, 0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 229, 192, 0.3);
+    background: rgba(255, 255, 255, 0.3);
   }
 }

@@ -60,9 +60,9 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden bg-black px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16"
     >
-      <div className="absolute top-1/4 left-1/4 -z-10 h-80 w-80 rounded-full bg-emerald-500/5 blur-[150px]" />
-      <div className="absolute bottom-1/3 right-1/4 -z-10 h-80 w-80 rounded-full bg-teal-500/5 blur-[150px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#00e5c0]/[0.015] blur-[200px] -z-10" />
+      <div className="absolute top-1/4 left-1/4 -z-10 h-80 w-80 rounded-full bg-white/5 blur-[150px]" />
+      <div className="absolute bottom-1/3 right-1/4 -z-10 h-80 w-80 rounded-full bg-white/5 blur-[150px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/[0.015] blur-[200px] -z-10" />
 
       <motion.div
         className="my-auto mx-auto w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl text-center"
@@ -72,16 +72,16 @@ export default function HeroSection() {
       >
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/5 px-4 md:px-5 py-1.5 md:py-2 text-xs md:text-sm font-medium text-emerald-400 backdrop-blur-md mb-6 md:mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-4 md:px-5 py-1.5 md:py-2 text-xs md:text-sm font-medium text-white backdrop-blur-md mb-6 md:mb-8"
         >
-          <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="flex h-2 w-2 rounded-full bg-white animate-pulse" />
           Open for New Opportunities
         </motion.div>
 
         <motion.h1
           variants={itemVariants}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight text-white leading-none"
-          style={{ textShadow: '0 0 60px rgba(0,229,192,0.08)' }}
+          style={{ textShadow: '0 0 60px rgba(255,255,255,0.08)' }}
         >
           Pulindu Godage
         </motion.h1>
@@ -90,10 +90,10 @@ export default function HeroSection() {
           variants={itemVariants}
           className="mt-4 md:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight min-h-[1.2em]"
         >
-          <span className="bg-gradient-to-r cursor-default from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r cursor-default from-white via-gray-300 to-gray-400 bg-clip-text text-transparent">
             {displayedText}
           </span>
-          <span className="inline-block w-1 bg-cyan-400 ml-1 animate-pulse" style={{ height: '0.8em' }} />
+          <span className="inline-block w-1 bg-white ml-1 animate-pulse" style={{ height: '0.8em' }} />
         </motion.h4>
 
         <motion.p
@@ -109,7 +109,7 @@ export default function HeroSection() {
         >
           <a
             href="#contact"
-            className="group relative inline-flex h-12 md:h-14 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 md:px-8 text-sm md:text-base font-medium text-white shadow-lg shadow-emerald-500/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-emerald-500/30 active:scale-[0.98]"
+            className="group relative inline-flex h-12 md:h-14 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-gray-100 to-gray-300 px-6 md:px-8 text-sm md:text-base font-medium text-black shadow-lg shadow-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-white/30 active:scale-[0.98]"
           >
             Let's Build Something
           </a>
@@ -123,7 +123,7 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="mt-12 md:mt-16 flex flex-col items-center gap-2 text-slate-500 transition-colors duration-300 hover:text-emerald-400"
+        className="mt-12 md:mt-16 flex flex-col items-center gap-2 text-slate-500 transition-colors duration-300 hover:text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}

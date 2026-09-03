@@ -87,17 +87,17 @@ const focusItems: FocusItem[] = [
   {
     icon: Zap, label: 'Performance',
     desc: 'Building fast and optimized web applications.',
-    borderColor: 'border-[#00e5c0]/20', iconBg: 'bg-[#00e5c0]/5',
+    borderColor: 'border-white/20', iconBg: 'bg-white/5',
   },
   {
     icon: Shield, label: 'Scalability',
     desc: 'Writing clean, modular and scalable code.',
-    borderColor: 'border-emerald-500/20', iconBg: 'bg-emerald-500/5',
+    borderColor: 'border-white/20', iconBg: 'bg-white/5',
   },
   {
     icon: User, label: 'User Experience',
     desc: 'Creating intuitive and engaging interfaces.',
-    borderColor: 'border-indigo-500/20', iconBg: 'bg-indigo-500/5',
+    borderColor: 'border-white/20', iconBg: 'bg-white/5',
   },
 ];
 
@@ -118,7 +118,7 @@ const CategoryTitle = memo(function CategoryTitle({
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <Icon className="w-4 h-4 text-[#00e5c0]" />
+        <Icon className="w-4 h-4 text-white" />
       </motion.div>
       <motion.h2
         initial={{ opacity: 0, x: -20 }}
@@ -133,7 +133,7 @@ const CategoryTitle = memo(function CategoryTitle({
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="h-full w-full origin-left bg-gradient-to-r from-[#00e5c0]/50 via-slate-700 to-transparent"
+          className="h-full w-full origin-left bg-gradient-to-r from-white/50 via-slate-700 to-transparent"
         />
       </div>
     </div>
@@ -161,7 +161,7 @@ const ParticlesBackground = memo(function ParticlesBackground() {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-[#00e5c0]"
+          className="absolute rounded-full bg-white"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
@@ -234,7 +234,7 @@ const SkillsSection = memo(function SkillsSection() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen bg-black text-white font-sans px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28 flex justify-center items-center overflow-hidden selection:bg-[#00e5c0] selection:text-black"
+      className="relative min-h-screen bg-black text-white font-sans px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28 flex justify-center items-center overflow-hidden selection:bg-white selection:text-black"
       aria-label="Skills and technologies section"
     >
       <ParticlesBackground />
@@ -260,12 +260,12 @@ const SkillsSection = memo(function SkillsSection() {
           >
             <div>
               <motion.div
-                className="inline-flex items-center gap-2 bg-[#091a24] border border-[#00e5c0]/30 text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full mb-6"
+                className="inline-flex items-center gap-2 bg-[#1a1a1a] border border-white/30 text-white text-[10px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full mb-6"
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0] animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 My Skills
               </motion.div>
 
@@ -274,11 +274,11 @@ const SkillsSection = memo(function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                style={{ textShadow: '0 0 40px rgba(0,229,192,0.08)' }}
+                style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}
               >
                 Technologies{' '}
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
                   I Work With
                 </span>
               </motion.h1>
@@ -300,7 +300,7 @@ const SkillsSection = memo(function SkillsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <h3 className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">
+              <h3 className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">
                 What I Focus On
               </h3>
 
@@ -317,7 +317,7 @@ const SkillsSection = memo(function SkillsSection() {
                   }}
                 >
                   <div
-                    className={`w-10 h-10 shrink-0 ${item.iconBg} ${item.borderColor} text-[#00e5c0] rounded-xl flex items-center justify-center border`}
+                    className={`w-10 h-10 shrink-0 ${item.iconBg} ${item.borderColor} text-white rounded-xl flex items-center justify-center border`}
                   >
                     <item.icon className="w-5 h-5" />
                   </div>
@@ -381,12 +381,12 @@ const SkillsSection = memo(function SkillsSection() {
                 {softSkills.map((skill, i) => (
                   <motion.div
                     key={skill.name}
-                    className="bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#00e5c0]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00e5c0]/50"
+                    className="bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                     variants={itemVariants}
                     tabIndex={0}
                     role="article"
                   >
-                    <skill.icon className="w-5 h-5 text-[#00e5c0] mb-3" />
+                    <skill.icon className="w-5 h-5 text-white mb-3" />
                     <h4 className="text-slate-200 font-semibold text-sm mb-2">
                       {skill.name}
                     </h4>

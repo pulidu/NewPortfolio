@@ -43,13 +43,13 @@ export default function QuoteCard() {
       onMouseLeave={handleMouseLeave}
       className="relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-3xl p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden"
     >
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#00e5c0]/10 blur-[80px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-emerald-400/10 blur-[60px] rounded-full pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-white/10 blur-[60px] rounded-full pointer-events-none" />
 
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-[#00e5c0]/30 pointer-events-none"
+          className="absolute rounded-full bg-white/30 pointer-events-none"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
@@ -71,18 +71,18 @@ export default function QuoteCard() {
 
       <div className="relative z-10 flex justify-center mb-6">
         <motion.div
-          className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-[#00e5c0]/20 to-emerald-500/20 border border-[#00e5c0]/20 flex items-center justify-center shadow-[0_0_30px_rgba(0,229,192,0.1)]"
+          className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-white/20 to-white/20 border border-white/20 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)]"
           style={{ x: iconX, y: iconY }}
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-[#00e5c0]" />
+          <GraduationCap className="w-10 h-10 md:w-12 md:h-12 text-white" />
         </motion.div>
       </div>
 
       <div className="relative z-10 text-center">
         <svg
-          className="w-6 h-6 text-[#00e5c0]/30 mx-auto mb-3"
+          className="w-6 h-6 text-white/30 mx-auto mb-3"
           fill="currentColor"
           viewBox="0 0 24 24"
         >

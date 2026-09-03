@@ -61,14 +61,14 @@ const ServiceCard = memo(function ServiceCard({ service, index }: { service: Ser
       variants={itemVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className="relative group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-lg p-6 md:p-7 lg:p-8 flex flex-col gap-5 lg:gap-6 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#00e5c0]/40 hover:shadow-[0_0_30px_rgba(0,229,192,0.08)]"
+      className="relative group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-lg p-6 md:p-7 lg:p-8 flex flex-col gap-5 lg:gap-6 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
     >
       <span className="absolute bottom-4 right-5 text-[5rem] lg:text-[7rem] font-black text-white/[0.04] select-none leading-none pointer-events-none">
         {service.id}
       </span>
 
-      <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-[#00e5c0]/30 group-hover:bg-[#00e5c0]/5">
-        <Icon size={24} className="text-[#00e5c0]" strokeWidth={1.5} />
+      <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/5">
+        <Icon size={24} className="text-white" strokeWidth={1.5} />
       </div>
 
       <div className="flex flex-col gap-3 lg:gap-4 flex-1">
@@ -112,7 +112,7 @@ export default function ServicesSection() {
             />
           ))}
         </svg>
-        <div className="absolute top-0 right-0 w-80 lg:w-96 h-80 lg:h-96 bg-[#00e5c0]/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-80 lg:w-96 h-80 lg:h-96 bg-white/5 rounded-full blur-3xl" />
       </div>
 
       <motion.div
@@ -121,9 +121,9 @@ export default function ServicesSection() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#00e5c0]/30 bg-[#00e5c0]/10 px-4 md:px-5 py-1.5 md:py-2">
-          <span className="w-2 h-2 rounded-full bg-[#00e5c0]" />
-          <span className="text-[#00e5c0] text-xs font-semibold tracking-widest uppercase">What I Do</span>
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 md:px-5 py-1.5 md:py-2">
+          <span className="w-2 h-2 rounded-full bg-white" />
+          <span className="text-white text-xs font-semibold tracking-widest uppercase">What I Do</span>
         </div>
         <h2 className="text-white text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight leading-none">
           SERVICES

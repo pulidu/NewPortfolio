@@ -96,7 +96,7 @@ const CertCard = memo(function CertCard({
       <div
         className={`relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] transition-all duration-500 ${
           hovered
-            ? '-translate-y-2 shadow-[0_0_30px_rgba(0,229,192,0.12)] border-[#00e5c0]/30'
+            ? '-translate-y-2 shadow-[0_0_30px_rgba(255,255,255,0.12)] border-white/30'
             : ''
         }`}
       >
@@ -112,7 +112,7 @@ const CertCard = memo(function CertCard({
           />
           <div className="absolute top-3 right-3 z-20">
             <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-              <Award className="w-4 h-4 text-[#00e5c0]" />
+              <Award className="w-4 h-4 text-white" />
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ const CertCard = memo(function CertCard({
           <h3 className="text-white font-semibold text-sm mb-1 leading-snug">
             {cert.title}
           </h3>
-          <p className="text-[#00e5c0] text-xs font-medium mb-3">
+          <p className="text-white text-xs font-medium mb-3">
             {cert.issuer}
           </p>
           <div className="flex items-center justify-between text-[10px] text-slate-500 pt-3 border-t border-white/[0.06]">
@@ -202,7 +202,7 @@ function CertViewer({
                 <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
                   {cert.title}
                 </h3>
-                <p className="text-[#00e5c0] text-sm font-medium mt-0.5">
+                <p className="text-white text-sm font-medium mt-0.5">
                   {cert.issuer}
                 </p>
               </div>
@@ -216,7 +216,7 @@ function CertViewer({
                 </span>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1 text-[11px] font-medium px-3 py-1.5 rounded-lg bg-[#00e5c0]/10 text-[#00e5c0] hover:bg-[#00e5c0]/20 transition-all duration-300"
+                  className="inline-flex items-center gap-1 text-[11px] font-medium px-3 py-1.5 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
                 >
                   <ExternalLink className="w-3 h-3" />
                   Verify
@@ -230,7 +230,7 @@ function CertViewer({
         <div className="flex items-center justify-center gap-4 mt-5">
           <button
             onClick={goPrev}
-            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black transition-all duration-300 group"
+            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-white hover:border-white hover:text-black transition-all duration-300 group"
           >
             <ChevronLeft className="w-4 h-4 text-gray-400 group-hover:text-black" />
           </button>
@@ -241,7 +241,7 @@ function CertViewer({
 
           <button
             onClick={goNext}
-            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black transition-all duration-300 group"
+            className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-white hover:border-white hover:text-black transition-all duration-300 group"
           >
             <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-black" />
           </button>
@@ -282,7 +282,7 @@ const CertificationsSection = memo(function CertificationsSection() {
       ref={sectionRef}
       className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
     >
-      <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-[#00e5c0]/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-white/3 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <motion.div
@@ -291,15 +291,15 @@ const CertificationsSection = memo(function CertificationsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00e5c0]/30 bg-[#00e5c0]/10 px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0]" />
-            <span className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            <span className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">
               Credentials
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Certifications{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
               & Awards
             </span>
           </h2>
@@ -314,7 +314,7 @@ const CertificationsSection = memo(function CertificationsSection() {
           {/* Left arrow */}
           <button
             onClick={() => scroll('left')}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-white hover:border-white hover:text-black ${
               canScrollLeft
                 ? 'opacity-100 pointer-events-auto'
                 : 'opacity-0 pointer-events-none'
@@ -350,7 +350,7 @@ const CertificationsSection = memo(function CertificationsSection() {
           {/* Right arrow */}
           <button
             onClick={() => scroll('right')}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:text-black ${
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#0B1016] border border-[#1D2733] flex items-center justify-center transition-all duration-300 hover:bg-white hover:border-white hover:text-black ${
               canScrollRight
                 ? 'opacity-100 pointer-events-auto'
                 : 'opacity-0 pointer-events-none'

@@ -63,7 +63,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
             {particles.map((p) => (
               <motion.div
                 key={p.id}
-                className="absolute rounded-full bg-blue-400/20"
+                className="absolute rounded-full bg-white/20"
                 style={{
                   left: `${p.x}%`,
                   top: `${p.y}%`,
@@ -90,7 +90,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
             <div className="relative w-24 h-24 md:w-28 md:h-28">
               {/* Pulsing glow behind logo */}
               <motion.div
-                className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl"
+                className="absolute inset-0 rounded-full bg-white/20 blur-2xl"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.3, 0.6, 0.3],
@@ -108,7 +108,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
                   className="absolute inset-0 rounded-full blur-[6px]"
                   style={{
                     background:
-                      'conic-gradient(from 0deg, transparent, #3B82F6 20%, transparent 40%, #3B82F6 60%, transparent 80%)',
+                      'conic-gradient(from 0deg, transparent, #ffffff 20%, transparent 40%, #ffffff 60%, transparent 80%)',
                     WebkitMask:
                       'radial-gradient(circle, transparent 44%, black 46%, black 54%, transparent 56%)',
                     mask:
@@ -122,7 +122,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
                   className="absolute inset-0 rounded-full"
                   style={{
                     background:
-                      'conic-gradient(from 0deg, transparent, #3B82F6 20%, transparent 40%, #3B82F6 60%, transparent 80%)',
+                      'conic-gradient(from 0deg, transparent, #ffffff 20%, transparent 40%, #ffffff 60%, transparent 80%)',
                     WebkitMask:
                       'radial-gradient(circle, transparent 45%, black 47%, black 53%, transparent 55%)',
                     mask:
@@ -156,7 +156,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
                 Pulindu Godage
               </motion.h1>
               <motion.p
-                className="text-xs md:text-sm text-blue-400/70 tracking-[0.2em] uppercase"
+                className="text-xs md:text-sm text-white/70 tracking-[0.2em] uppercase"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -178,7 +178,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
             >
               <div className="flex-1 h-[2px] bg-white/10 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full"
+                  className="h-full bg-gradient-to-r from-white to-white/70 rounded-full"
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 />

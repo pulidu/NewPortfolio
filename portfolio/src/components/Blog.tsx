@@ -85,7 +85,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
         className={[
           'relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-lg',
           'border border-white/[0.06] transition-all duration-500 h-full flex flex-col',
-          hovered ? '-translate-y-2 shadow-[0_0_30px_rgba(0,229,192,0.1)] border-[#00e5c0]/25' : '',
+          hovered ? '-translate-y-2 shadow-[0_0_30px_rgba(255,255,255,0.1)] border-white/25' : '',
         ].join(' ')}
       >
         <div className="relative h-48 overflow-hidden">
@@ -100,7 +100,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
             ].join(' ')}
           />
           <div className="absolute top-3 left-3 z-20">
-            <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-[#00e5c0]/10 border border-[#00e5c0]/30 text-[#00e5c0]">
+            <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-white/10 border border-white/30 text-white">
               {post.category}
             </span>
           </div>
@@ -134,7 +134,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
             href={`#${post.slug}`}
             className={[
               'inline-flex items-center gap-2 text-xs font-medium transition-all duration-300 w-fit',
-              hovered ? 'text-[#00e5c0] gap-3' : 'text-slate-400',
+              hovered ? 'text-white gap-3' : 'text-slate-400',
             ].join(' ')}
           >
             Read Article
@@ -158,7 +158,7 @@ const BlogSection = memo(function BlogSection() {
       className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       aria-label="Blog"
     >
-      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-emerald-500/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-white/3 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
@@ -167,13 +167,13 @@ const BlogSection = memo(function BlogSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00e5c0]/30 bg-[#00e5c0]/10 px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0]" />
-            <span className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">Blog</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            <span className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">Blog</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Latest{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">Articles</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">Articles</span>
           </h2>
           <p className="text-slate-400 text-base max-w-lg">
             Thoughts, tutorials, and insights on software development and technology.
@@ -189,8 +189,8 @@ const BlogSection = memo(function BlogSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <span className="text-[10px] font-bold tracking-widest uppercase text-[#00e5c0]/60 mb-4 block">Featured Article</span>
-            <div className="group relative rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#00e5c0]/30 hover:shadow-[0_0_40px_rgba(0,229,192,0.1)]">
+            <span className="text-[10px] font-bold tracking-widest uppercase text-white/60 mb-4 block">Featured Article</span>
+            <div className="group relative rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-full overflow-hidden">
                   <img
@@ -212,7 +212,7 @@ const BlogSection = memo(function BlogSection() {
                       <span key={tag} className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-500">{tag}</span>
                     ))}
                   </div>
-                  <a href={`#${featured.slug}`} className="inline-flex items-center gap-2 text-xs font-medium text-[#00e5c0] group-hover:gap-3 transition-all duration-300">
+                  <a href={`#${featured.slug}`} className="inline-flex items-center gap-2 text-xs font-medium text-white group-hover:gap-3 transition-all duration-300">
                     Read Full Article <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -242,7 +242,7 @@ const BlogSection = memo(function BlogSection() {
             >
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.03] border border-white/[0.08] text-sm font-medium text-slate-300 hover:text-white hover:border-[#00e5c0]/40 hover:bg-[#00e5c0]/5 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.03] border border-white/[0.08] text-sm font-medium text-slate-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all duration-300 group"
               >
                 View All Articles
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -261,7 +261,7 @@ const BlogSection = memo(function BlogSection() {
               I'm working on some exciting content. Stay tuned for articles about development, design, and technology.
             </p>
             <div className="relative">
-              <span className="px-4 py-2 text-xs font-semibold rounded-full bg-[#00e5c0]/10 border border-[#00e5c0]/30 text-[#00e5c0] animate-pulse">
+              <span className="px-4 py-2 text-xs font-semibold rounded-full bg-white/10 border border-white/30 text-white animate-pulse">
                 Coming Soon
               </span>
             </div>

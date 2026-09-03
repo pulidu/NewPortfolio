@@ -41,22 +41,22 @@ export default function EducationCard({ item }: EducationCardProps) {
     >
       <div className="flex flex-col items-center w-8 md:w-10 lg:w-12 flex-shrink-0">
         <motion.div
-          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full bg-[#050505] border-2 border-[#00e5c0] shadow-[0_0_16px_rgba(0,229,192,0.4)] flex items-center justify-center z-10"
+          className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full bg-[#050505] border-2 border-white shadow-[0_0_16px_rgba(255,255,255,0.4)] flex items-center justify-center z-10"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
         >
-          <Icon className="w-3 h-3 md:w-4 md:h-4 text-[#00e5c0]" />
+          <Icon className="w-3 h-3 md:w-4 md:h-4 text-white" />
         </motion.div>
         <div className="flex-1 w-[2px] bg-white/[0.04] rounded-full mt-2" />
       </div>
 
       <div className="flex-1 min-w-0 pb-2">
-        <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-3xl p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(0,229,192,0.1)] hover:border-[#00e5c0]/30 group/card">
+        <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-3xl p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:border-white/30 group/card">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
-              <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.15em] uppercase text-[#00e5c0] bg-[#00e5c0]/10 border border-[#00e5c0]/20 px-3 py-1 rounded-full mb-4">
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.15em] uppercase text-white bg-white/10 border border-white/20 px-3 py-1 rounded-full mb-4">
                 <Icon className="w-3 h-3" />
                 {item.badge}
               </span>
@@ -88,7 +88,7 @@ export default function EducationCard({ item }: EducationCardProps) {
               </p>
             </div>
 
-            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center transition-all duration-300 group-hover/card:bg-[#00e5c0] group-hover/card:border-[#00e5c0] group-hover/card:shadow-[0_0_20px_rgba(0,229,192,0.3)] mt-1">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-white/[0.08] flex items-center justify-center transition-all duration-300 group-hover/card:bg-white group-hover/card:border-white group-hover/card:shadow-[0_0_20px_rgba(255,255,255,0.3)] mt-1">
               <ArrowUpRight className="w-4 h-4 text-gray-500 transition-all duration-300 group-hover/card:text-black group-hover/card:rotate-45" />
             </div>
           </div>

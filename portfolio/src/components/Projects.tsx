@@ -84,7 +84,7 @@ const cardVariants = {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div variants={cardVariants} className="group relative">
-      <div className="relative overflow-hidden rounded-3xl bg-[#0B1016] border border-[#1D2733] shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-500 ease-out h-full flex flex-col hover:-translate-y-2 hover:border-[#00e5c0]/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_40px_rgba(0,229,192,0.08)]">
+      <div className="relative overflow-hidden rounded-3xl bg-[#0B1016] border border-[#1D2733] shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-500 ease-out h-full flex flex-col hover:-translate-y-2 hover:border-white/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_40px_rgba(255,255,255,0.08)]">
         {/* Image */}
         <div className="relative overflow-hidden aspect-video">
           <img
@@ -99,8 +99,8 @@ function ProjectCard({ project }: { project: Project }) {
         {/* Content */}
         <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-9 h-9 rounded-lg bg-[#00e5c0]/10 flex items-center justify-center flex-shrink-0">
-              <project.icon className="w-4 h-4 text-[#00e5c0]" />
+            <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+              <project.icon className="w-4 h-4 text-white" />
             </div>
             <h3 className="text-xl font-bold text-white leading-tight">
               {project.title}
@@ -125,14 +125,14 @@ function ProjectCard({ project }: { project: Project }) {
           <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
             <a
               href={project.live}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#00e5c0] transition-all duration-300 group/link"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white transition-all duration-300 group/link"
             >
               View Project
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
             </a>
             <a
               href={project.github}
-              className="w-9 h-9 rounded-full border border-white/[0.08] flex items-center justify-center transition-all duration-300 hover:bg-[#00e5c0] hover:border-[#00e5c0] hover:shadow-[0_0_15px_rgba(0,229,192,0.2)]"
+              className="w-9 h-9 rounded-full border border-white/[0.08] flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
               aria-label="View on GitHub"
             >
               <GithubIcon />
@@ -155,8 +155,8 @@ export default function ProjectsSection() {
       className="relative bg-[#05070A] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-[120px] pb-[120px]"
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00e5c0]/[0.02] blur-[150px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-emerald-500/[0.02] blur-[120px] rounded-full" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-white/[0.02] blur-[150px] rounded-full" />
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-white/[0.02] blur-[120px] rounded-full" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
@@ -166,14 +166,14 @@ export default function ProjectsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2 border border-[#00e5c0]/30 bg-[#00e5c0]/10 text-[#00e5c0] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0]" />
+          <div className="inline-flex items-center gap-2 border border-white/30 bg-white/10 text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
             My Work
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
             Featured{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
               Projects
             </span>
           </h2>
@@ -203,7 +203,7 @@ export default function ProjectsSection() {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full border border-[#00e5c0]/50 text-[#00e5c0] font-semibold text-sm transition-all duration-300 hover:bg-[#00e5c0] hover:text-black hover:shadow-[0_0_25px_rgba(0,229,192,0.2)]"
+            className="inline-flex items-center gap-2 px-10 py-4 rounded-full border border-white/50 text-white font-semibold text-sm transition-all duration-300 hover:bg-white hover:text-black hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
           >
             View All Projects
             <ExternalLink className="w-4 h-4" />

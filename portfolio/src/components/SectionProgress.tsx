@@ -10,8 +10,8 @@ export default function SectionProgress() {
       className="fixed left-0 top-0 bottom-0 w-[3px] z-[100] origin-top"
       style={{
         scaleY,
-        background: 'linear-gradient(to bottom, #00e5c0, #10b981, #00e5c0)',
-        boxShadow: '0 0 10px rgba(0,229,192,0.3)',
+        background: 'linear-gradient(to bottom, #ffffff, #9ca3af, #ffffff)',
+        boxShadow: '0 0 10px rgba(255,255,255,0.3)',
       }}
       aria-hidden="true"
     />

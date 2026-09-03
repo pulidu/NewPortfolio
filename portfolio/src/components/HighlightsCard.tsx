@@ -45,7 +45,7 @@ export default function HighlightsCard() {
     <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-3xl p-6 md:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
       <h3 className="text-lg font-bold text-white mb-6">
         Learning Highlights
-        <span className="block w-8 h-[2px] bg-gradient-to-r from-[#00e5c0] to-transparent mt-2" />
+        <span className="block w-8 h-[2px] bg-gradient-to-r from-white to-transparent mt-2" />
       </h3>
 
       <div className="space-y-5">
@@ -57,13 +57,13 @@ export default function HighlightsCard() {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
-            className="group flex items-start gap-4 p-3 -mx-3 rounded-2xl transition-all duration-300 hover:bg-white/[0.03] hover:border hover:border-[#00e5c0]/10"
+            className="group flex items-start gap-4 p-3 -mx-3 rounded-2xl transition-all duration-300 hover:bg-white/[0.03] hover:border hover:border-white/10"
           >
-            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#00e5c0]/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#00e5c0]/20 group-hover:shadow-[0_0_15px_rgba(0,229,192,0.15)]">
-              <item.icon className="w-4 h-4 text-[#00e5c0]" />
+            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+              <item.icon className="w-4 h-4 text-white" />
             </div>
             <div className="min-w-0">
-              <h4 className="text-sm font-semibold text-white group-hover:text-[#00e5c0] transition-colors duration-300">
+              <h4 className="text-sm font-semibold text-white group-hover:text-white transition-colors duration-300">
                 {item.title}
               </h4>
               <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">

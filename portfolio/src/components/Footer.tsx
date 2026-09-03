@@ -36,13 +36,13 @@ const Footer = memo(function Footer() {
 
   return (
     <footer className="relative bg-black pt-10 md:pt-12 lg:pt-14 pb-6 xl:pb-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden" aria-label="Site footer">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl lg:max-w-6xl xl:max-w-8xl h-[1px] bg-gradient-to-r from-transparent via-[#00e5c0]/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl lg:max-w-6xl xl:max-w-8xl h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
             <a href="#home" className="text-xl font-black tracking-[0.15em] text-white/90">
-              PULINDU<span className="text-[#00e5c0]">.</span>
+              PULINDU<span className="text-white">.</span>
             </a>
             <p className="text-slate-500 text-sm leading-relaxed mt-2 max-w-sm">
               Building scalable digital experiences with passion. Full-stack developer crafting modern web applications.
@@ -54,7 +54,7 @@ const Footer = memo(function Footer() {
                 key={link.label}
                 href={link.href}
                 aria-label={link.label}
-                className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-500 hover:text-[#00e5c0] hover:border-[#00e5c0]/30 hover:-translate-y-0.5 transition-all duration-300"
+                className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-500 hover:text-white hover:border-white/30 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <link.icon className="w-4 h-4" />
               </a>
@@ -70,7 +70,7 @@ const Footer = memo(function Footer() {
               &copy; {year} Pulindu Godage. All rights reserved.
             </p>
             <p className="text-slate-600 text-xs flex items-center gap-1">
-              Built with <Heart className="w-3 h-3 text-[#00e5c0]" /> using React &amp; Framer Motion
+              Built with <Heart className="w-3 h-3 text-white" /> using React &amp; Framer Motion
             </p>
           </div>
         </div>
@@ -78,7 +78,7 @@ const Footer = memo(function Footer() {
 
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-[#00e5c0] hover:border-[#00e5c0]/30 hover:-translate-y-1 transition-all duration-300 shadow-lg"
+        className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 hover:-translate-y-1 transition-all duration-300 shadow-lg"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-4 h-4" />

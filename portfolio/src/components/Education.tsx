@@ -24,7 +24,7 @@ const educationData: EducationItem[] = [
     year: '2024 \u2013 Present',
     badge: 'Higher National Diploma',
     icon: 'GraduationCap',
-    logo: 'https://placehold.co/64x64/0B1120/00e5c3?text=IJSE&font=inter',
+    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=IJSE&font=inter',
     description:
       'Focusing on enterprise application development, advanced Java concepts, full-stack web architecture, and database management systems.',
   },
@@ -35,7 +35,7 @@ const educationData: EducationItem[] = [
     year: '2023 \u2013 2024',
     badge: 'Diploma',
     icon: 'BookOpen',
-    logo: 'https://placehold.co/64x64/0B1120/00e5c3?text=NIBM&font=inter',
+    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=NIBM&font=inter',
     description:
       'Comprehensive study of information technology fundamentals, programming principles, networking, and modern computing systems.',
   },
@@ -46,7 +46,7 @@ const educationData: EducationItem[] = [
     year: '2022 \u2013 2023',
     badge: 'Certificate',
     icon: 'Award',
-    logo: 'https://placehold.co/64x64/0B1120/00e5c3?text=NIBM&font=inter',
+    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=NIBM&font=inter',
     description:
       'Foundation in information and communication technology, including computer applications, MS Office tools, and introductory programming.',
   },
@@ -93,8 +93,8 @@ export default function EducationSection() {
       className="relative bg-black overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28"
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#00e5c0]/[0.03] blur-[150px] rounded-full" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/[0.03] blur-[150px] rounded-full" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/[0.03] blur-[150px] rounded-full" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/[0.03] blur-[150px] rounded-full" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl">
@@ -104,14 +104,14 @@ export default function EducationSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 border border-[#00e5c0]/30 bg-[#00e5c0]/10 text-[#00e5c0] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0] animate-pulse" />
+          <div className="inline-flex items-center gap-2 border border-white/30 bg-white/10 text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             {'\uD83C\uDF93'} My Journey
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight">
             Education{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
               &amp; Qualifications
             </span>
           </h2>

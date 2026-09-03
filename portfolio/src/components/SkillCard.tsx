@@ -56,7 +56,7 @@ const SkillCard = memo(function SkillCard({ name, rating, icon, index }: SkillCa
   }), [index]);
 
   const spotlightBg = hovered && !reducedMotion
-    ? { background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0,229,192,0.08), transparent 40%)` }
+    ? { background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.08), transparent 40%)` }
     : {};
 
   const centerX = cardRef.current ? cardRef.current.offsetWidth / 2 : 60;
@@ -93,9 +93,9 @@ const SkillCard = memo(function SkillCard({ name, rating, icon, index }: SkillCa
           'bg-white/[0.03] backdrop-blur-lg',
           'border border-white/[0.06]',
           'transition-all duration-500 ease-out',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00e5c0]/50',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50',
           hovered
-            ? '-translate-y-2 scale-105 shadow-[0_0_30px_rgba(0,229,192,0.25)] border-[#00e5c0]/40'
+            ? '-translate-y-2 scale-105 shadow-[0_0_30px_rgba(255,255,255,0.25)] border-white/40'
             : '',
         ].join(' ')}
         style={spotlightBg}
@@ -106,7 +106,7 @@ const SkillCard = memo(function SkillCard({ name, rating, icon, index }: SkillCa
             hovered ? 'opacity-100' : 'opacity-0',
           ].join(' ')}
           style={{
-            background: 'linear-gradient(135deg, rgba(0,229,192,0.15), transparent 60%)',
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.15), transparent 60%)',
           }}
         />
 
@@ -116,7 +116,7 @@ const SkillCard = memo(function SkillCard({ name, rating, icon, index }: SkillCa
             hovered ? 'opacity-100' : '',
           ].join(' ')}
           style={{
-            background: 'linear-gradient(135deg, rgba(0,229,192,0.3), transparent, rgba(0,229,192,0.1))',
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.1))',
             zIndex: -1,
             filter: 'blur(3px)',
           }}
@@ -161,7 +161,7 @@ const SkillCard = memo(function SkillCard({ name, rating, icon, index }: SkillCa
                 viewport={{ once: true }}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                   i < rating
-                    ? 'bg-[#00e5c0] shadow-[0_0_6px_rgba(0,229,192,0.6)]'
+                    ? 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.6)]'
                     : 'bg-slate-800'
                 }`}
                 animate={

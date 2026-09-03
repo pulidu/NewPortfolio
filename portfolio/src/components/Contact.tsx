@@ -39,7 +39,7 @@ interface FormErrors {
 const socialLinks = [
   { icon: LinkedInIcon, label: 'LinkedIn', href: '#', color: 'hover:border-[#0077b5] hover:text-[#0077b5]' },
   { icon: GithubIcon, label: 'GitHub', href: '#', color: 'hover:border-white hover:text-white' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@pulindu.dev', color: 'hover:border-[#00e5c0] hover:text-[#00e5c0]' },
+  { icon: Mail, label: 'Email', href: 'mailto:hello@pulindu.dev', color: 'hover:border-white hover:text-white' },
   { icon: TwitterIcon, label: 'Twitter', href: '#', color: 'hover:border-[#1DA1F2] hover:text-[#1DA1F2]' },
   { icon: MessageSquare, label: 'Facebook', href: '#', color: 'hover:border-[#1877F2] hover:text-[#1877F2]' },
 ];
@@ -87,7 +87,7 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
         className={[
           'w-full bg-white/[0.02] border rounded-xl px-4 pt-6 pb-2 text-sm text-white',
           'transition-all duration-300 outline-none',
-          'focus:border-[#00e5c0]/50 focus:shadow-[0_0_15px_rgba(0,229,192,0.06)]',
+          'focus:border-white/50 focus:shadow-[0_0_15px_rgba(255,255,255,0.06)]',
           error ? 'border-red-500/50' : 'border-white/[0.08] hover:border-white/[0.15]',
           isTextarea ? 'resize-none' : '',
         ].join(' ')}
@@ -96,7 +96,7 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
       <label
         className={[
           'absolute left-4 transition-all duration-300 pointer-events-none',
-          isFloating ? 'top-2 text-[10px] text-[#00e5c0]/70' : 'top-1/2 -translate-y-1/2 text-sm text-slate-500',
+          isFloating ? 'top-2 text-[10px] text-white/70' : 'top-1/2 -translate-y-1/2 text-sm text-slate-500',
           error ? 'text-red-400' : '',
         ].join(' ')}
       >
@@ -151,7 +151,7 @@ const ContactSection = memo(function ContactSection() {
       className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       aria-label="Contact"
     >
-      <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-[#00e5c0]/3 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-white/3 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
@@ -160,13 +160,13 @@ const ContactSection = memo(function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00e5c0]/30 bg-[#00e5c0]/10 px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00e5c0]" />
-            <span className="text-[#00e5c0] text-[10px] font-bold tracking-[0.15em] uppercase">Contact</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            <span className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">Contact</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Let's{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#00e5c0]">Connect</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">Connect</span>
           </h2>
           <p className="text-slate-400 text-base max-w-lg">
             Have a project in mind or just want to say hi? I'd love to hear from you.
@@ -189,8 +189,8 @@ const ContactSection = memo(function ContactSection() {
                   { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#00e5c0]/10 border border-[#00e5c0]/20 flex items-center justify-center shrink-0">
-                      <item.icon className="w-4 h-4 text-[#00e5c0]" />
+                    <div className="w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                      <item.icon className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">{item.label}</p>
@@ -204,8 +204,8 @@ const ContactSection = memo(function ContactSection() {
             <motion.div variants={itemVariants} className="rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-white font-semibold text-sm">Availability</h3>
-                <span className="flex items-center gap-1.5 text-[11px] text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="flex items-center gap-1.5 text-[11px] text-white">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   Open to Work
                 </span>
               </div>
@@ -230,7 +230,7 @@ const ContactSection = memo(function ContactSection() {
                   className={[
                     'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium',
                     'bg-white/[0.02] border border-white/[0.06] text-slate-400',
-                    'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,229,192,0.08)]',
+                    'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(255,255,255,0.08)]',
                     link.color,
                   ].join(' ')}
                 >
@@ -251,10 +251,10 @@ const ContactSection = memo(function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-[#00e5c0]/20 p-10 text-center"
+                className="rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/20 p-10 text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-[#00e5c0]/10 border border-[#00e5c0]/30 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-[#00e5c0]" />
+                <div className="w-16 h-16 rounded-full bg-white/10 border border-white/30 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
                 <p className="text-slate-400 text-sm mb-6">Thank you for reaching out. I'll get back to you within 24 hours.</p>
@@ -282,8 +282,8 @@ const ContactSection = memo(function ContactSection() {
                   disabled={submitting}
                   className={[
                     'w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold',
-                    'bg-gradient-to-r from-[#00e5c0] to-emerald-500 text-black',
-                    'transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,229,192,0.3)]',
+                    'bg-gradient-to-r from-white to-gray-300 text-black',
+                    'transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]',
                     'disabled:opacity-60 disabled:cursor-not-allowed',
                   ].join(' ')}
                 >

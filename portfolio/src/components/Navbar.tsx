@@ -61,7 +61,7 @@ export default function Navbar(): JSX.Element {
           href="#home"
           className="text-2xl font-black uppercase tracking-[0.18em] text-white/95 sm:text-3xl"
         >
-          PULINDU<span className="ml-1 text-[#00e5c0]">.</span>
+          PULINDU<span className="ml-1 text-white">.</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -74,7 +74,7 @@ export default function Navbar(): JSX.Element {
                 className={[
                   'relative px-3 py-2 text-xs uppercase tracking-[0.15em] font-medium transition-all duration-300 rounded-lg',
                   isActive
-                    ? 'text-[#00e5c0]'
+                    ? 'text-white'
                     : 'text-white/60 hover:text-white hover:bg-white/[0.03]',
                 ].join(' ')}
               >
@@ -82,7 +82,7 @@ export default function Navbar(): JSX.Element {
                 {isActive && (
                   <motion.span
                     layoutId="activeNav"
-                    className="absolute inset-0 rounded-lg bg-[#00e5c0]/5 border border-[#00e5c0]/20"
+                    className="absolute inset-0 rounded-lg bg-white/5 border border-white/20"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}

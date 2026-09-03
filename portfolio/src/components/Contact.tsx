@@ -153,6 +153,40 @@ const ContactSection = memo(function ContactSection() {
     >
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-white/3 blur-[150px] rounded-full pointer-events-none" />
 
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <style>{`
+          .contact-line-move {
+            animation: contactLineMove 12s ease-in-out infinite alternate;
+          }
+          .contact-line-move-delayed {
+            animation: contactLineMove 16s ease-in-out infinite alternate-reverse;
+          }
+          @keyframes contactLineMove {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(20px) translateY(-14px); }
+            100% { transform: translateX(-14px) translateY(10px); }
+          }
+        `}</style>
+        <svg className="contact-line-move absolute top-0 right-0 w-[700px] lg:w-[900px] h-[400px] lg:h-[500px]" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {[0, 18, 36, 54, 72, 90, 108, 126].map((offset, i) => (
+            <path
+              key={i}
+              d={`M${700 - offset} 0 C${520 - offset} ${60 + i * 6}, ${380 - offset} ${130 + i * 4}, ${230 - offset} ${180 + i * 3} S${80 - offset} ${280 + i * 2} ${-offset} 400`}
+              stroke="white" strokeWidth="0.6" opacity={0.18 - i * 0.015}
+            />
+          ))}
+        </svg>
+        <svg className="contact-line-move-delayed absolute bottom-0 left-0 w-[500px] lg:w-[700px] h-[300px] lg:h-[400px]" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {[0, 18, 36, 54, 72, 90].map((offset, i) => (
+            <path
+              key={i}
+              d={`M${offset} 300 C${120 + offset} ${220 - i * 5}, ${260 + offset} ${150 - i * 4}, ${380 + offset} ${100 - i * 3} S${480 + offset} ${40 - i * 2} ${500 + offset} 0`}
+              stroke="white" strokeWidth="0.6" opacity={0.12 - i * 0.012}
+            />
+          ))}
+        </svg>
+      </div>
+
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
           className="flex flex-col items-center text-center mb-14"

@@ -59,9 +59,9 @@ export default function Navbar(): JSX.Element {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
         <a
           href="#home"
-          className="text-2xl font-black uppercase tracking-[0.18em] text-white/95 sm:text-3xl"
+          className="flex items-center text-2xl font-black uppercase tracking-[0.18em] text-white/95 sm:text-3xl"
         >
-          PULINDU<span className="ml-1 text-white">.</span>
+          PULINDU<span className="ml-2 inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse" />
         </a>
 
         <div className="hidden items-center gap-1 md:flex">

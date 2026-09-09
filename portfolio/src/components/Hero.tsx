@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import HeroRobot from './HeroRobot';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -63,6 +64,14 @@ export default function HeroSection() {
       <div className="absolute top-1/4 left-1/4 -z-10 h-80 w-80 rounded-full bg-white/5 blur-[150px]" />
       <div className="absolute bottom-1/3 right-1/4 -z-10 h-80 w-80 rounded-full bg-white/5 blur-[150px]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/[0.015] blur-[200px] -z-10" />
+
+      <div className="absolute top-24 md:top-28 left-3 sm:left-7 lg:left-12 xl:left-16 z-10">
+        <HeroRobot />
+      </div>
+
+      <div className="absolute top-24 md:top-28 right-3 sm:right-7 lg:right-12 xl:right-16 z-10">
+        <HeroRobot />
+      </div>
 
       <motion.div
         className="my-auto mx-auto w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl text-center"

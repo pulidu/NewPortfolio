@@ -284,7 +284,7 @@ const CertificationsSection = memo(function CertificationsSection() {
     >
       <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-white/3 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl">
         <motion.div
           className="flex flex-col items-center text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -297,13 +297,13 @@ const CertificationsSection = memo(function CertificationsSection() {
               Credentials
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
             Certifications{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
               & Awards
             </span>
           </h2>
-          <p className="text-slate-400 text-base max-w-lg">
+          <p className="text-slate-400 text-base sm:text-lg max-w-lg">
             Professional certifications and credentials that validate my
             expertise.
           </p>

@@ -4,6 +4,7 @@ import {
   ShoppingBag,
   ShoppingCart,
   KanbanSquare,
+  LineChart,
   ArrowRight,
   ExternalLink,
 } from 'lucide-react';
@@ -59,6 +60,18 @@ const projects: Project[] = [
       'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
     icon: KanbanSquare,
+    github: '#',
+    live: '#',
+  },
+  {
+    id: '4',
+    title: 'Analytics Dashboard',
+    description:
+      'Real-time analytics dashboard with interactive charts and data reporting.',
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',
+    tags: ['React', 'D3.js', 'PostgreSQL'],
+    icon: LineChart,
     github: '#',
     live: '#',
   },
@@ -152,14 +165,14 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative bg-[#05070A] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-[120px] pb-[120px]"
+      className="relative bg-[#05070A] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20 lg:py-24 xl:py-28"
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-white/[0.02] blur-[150px] rounded-full" />
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-white/[0.02] blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl">
         <motion.div
           className="flex flex-col items-center text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -185,7 +198,7 @@ export default function ProjectsSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}

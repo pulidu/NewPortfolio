@@ -1,5 +1,5 @@
-import { JSX, useState } from 'react'
-import { motion } from 'framer-motion'
+import { JSX, useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -16,6 +16,19 @@ import LoadingScreen from './components/LoadingScreen'
 
 export default function App(): JSX.Element {
   const [loading, setLoading] = useState(true)
+  const [showBlog, setShowBlog] = useState(false)
+
+  const handleBlogClick = useCallback(() => setShowBlog(prev => !prev), [])
+  const handleBlogClose = useCallback(() => setShowBlog(false), [])
+
+  useEffect(() => {
+    if (showBlog) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [showBlog])
 
   return (
     <>
@@ -29,7 +42,7 @@ export default function App(): JSX.Element {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <SectionProgress />
-          <Navbar />
+          <Navbar onBlogClick={handleBlogClick} showBlog={showBlog} onBlogClose={handleBlogClose} />
           <main className="overflow-hidden">
             <Hero />
             <About />
@@ -38,10 +51,13 @@ export default function App(): JSX.Element {
             <Projects />
             <Education />
             <Certifications />
-            <Blog />
             <Contact />
           </main>
           <Footer />
+
+          <AnimatePresence>
+            {showBlog && <Blog onClose={handleBlogClose} />}
+          </AnimatePresence>
         </motion.div>
       )}
     </>

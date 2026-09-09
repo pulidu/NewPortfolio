@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import {
   Send, Mail, Phone, MapPin, CheckCircle, Loader2, Download, MessageSquare,
 } from 'lucide-react';
+import HeroRobot from './HeroRobot';
 
 const LinkedInIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -19,6 +20,12 @@ const GithubIcon = () => (
 const TwitterIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const YoutubeIcon = () => (
+  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
   </svg>
 );
 
@@ -42,6 +49,7 @@ const socialLinks = [
   { icon: Mail, label: 'Email', href: 'mailto:hello@pulindu.dev', color: 'hover:border-white hover:text-white' },
   { icon: TwitterIcon, label: 'Twitter', href: '#', color: 'hover:border-[#1DA1F2] hover:text-[#1DA1F2]' },
   { icon: MessageSquare, label: 'Facebook', href: '#', color: 'hover:border-[#1877F2] hover:text-[#1877F2]' },
+  { icon: YoutubeIcon, label: 'YouTube', href: '#', color: 'hover:border-[#FF0000] hover:text-[#FF0000]' },
 ];
 
 const containerVariants = {
@@ -187,7 +195,7 @@ const ContactSection = memo(function ContactSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl">
         <motion.div
           className="flex flex-col items-center text-center mb-14"
           initial={{ opacity: 0, y: 20 }}
@@ -198,11 +206,11 @@ const ContactSection = memo(function ContactSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-white" />
             <span className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">Contact</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
             Let's{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">Connect</span>
           </h2>
-          <p className="text-slate-400 text-base max-w-lg">
+          <p className="text-slate-400 text-base sm:text-lg max-w-lg">
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
         </motion.div>
@@ -331,6 +339,10 @@ const ContactSection = memo(function ContactSection() {
             )}
           </motion.div>
         </div>
+      </div>
+
+      <div className="absolute bottom-6 right-4 sm:right-8 lg:right-12 z-10 scale-90 sm:scale-100 origin-bottom-right">
+        <HeroRobot />
       </div>
     </section>
   );

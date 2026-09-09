@@ -134,7 +134,7 @@ export default function ServicesSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 xl:gap-8"
+        className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-8xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 xl:gap-8"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}

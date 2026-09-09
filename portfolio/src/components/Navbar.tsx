@@ -5,6 +5,13 @@ import { Menu, X } from 'lucide-react';
 interface NavItem {
   name: string;
   href: string;
+  isBlog?: boolean;
+}
+
+interface NavbarProps {
+  onBlogClick: () => void;
+  showBlog?: boolean;
+  onBlogClose?: () => void;
 }
 
 const navItems: NavItem[] = [
@@ -14,11 +21,11 @@ const navItems: NavItem[] = [
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Education', href: '#education' },
-  { name: 'Blog', href: '#blog' },
+  { name: 'Blog', href: '#blog', isBlog: true },
   { name: 'Contact', href: '#contact' },
 ];
 
-export default function Navbar(): JSX.Element {
+export default function Navbar({ onBlogClick, showBlog, onBlogClose }: NavbarProps): JSX.Element {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -46,6 +53,35 @@ export default function Navbar(): JSX.Element {
 
   const handleLinkClick = useCallback(() => setIsMobileOpen(false), []);
 
+  const handleNavClick = useCallback((e: React.MouseEvent, item: NavItem) => {
+    if (item.isBlog) {
+      e.preventDefault();
+      onBlogClick();
+      return;
+    }
+
+    if (showBlog && onBlogClose) {
+      e.preventDefault();
+      document.body.style.overflow = '';
+      onBlogClose();
+      const targetId = item.href.slice(1);
+      setTimeout(() => {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  }, [onBlogClick, showBlog, onBlogClose]);
+
+  const handleLogoClick = useCallback((e: React.MouseEvent) => {
+    if (showBlog && onBlogClose) {
+      e.preventDefault();
+      document.body.style.overflow = '';
+      onBlogClose();
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 300);
+    }
+  }, [showBlog, onBlogClose]);
+
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -59,9 +95,11 @@ export default function Navbar(): JSX.Element {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
         <a
           href="#home"
+          onClick={handleLogoClick}
           className="flex items-center text-2xl font-black uppercase tracking-[0.18em] text-white/95 sm:text-3xl"
         >
-          PULINDU<span className="ml-2 inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="mr-2 text-blue-400/80 font-bold">~</span>
+          PULINDU<span className="ml-2 text-blue-400/80 font-bold">~</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -71,6 +109,7 @@ export default function Navbar(): JSX.Element {
               <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item)}
                 className={[
                   'relative px-3 py-2 text-xs uppercase tracking-[0.15em] font-medium transition-all duration-300 rounded-lg',
                   isActive
@@ -79,6 +118,9 @@ export default function Navbar(): JSX.Element {
                 ].join(' ')}
               >
                 {item.name}
+                {item.isBlog && (
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-500 animate-blink ml-1" />
+                )}
                 {isActive && (
                   <motion.span
                     layoutId="activeNav"
@@ -118,7 +160,7 @@ export default function Navbar(): JSX.Element {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   className="rounded-xl px-4 py-3 text-center text-sm uppercase tracking-[0.15em] text-white/80 transition hover:bg-white/5 hover:text-white"
-                  onClick={handleLinkClick}
+                  onClick={(e) => { handleNavClick(e, item); handleLinkClick(); }}
                 >
                   {item.name}
                 </motion.a>

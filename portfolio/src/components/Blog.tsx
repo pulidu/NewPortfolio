@@ -1,6 +1,6 @@
-import { memo, useState, useMemo, useRef } from 'react';
+import { memo, useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Clock, Calendar, ArrowRight, Tag, BookOpen } from 'lucide-react';
+import { Clock, Calendar, ArrowRight, Tag, BookOpen, X } from 'lucide-react';
 
 interface BlogPost {
   id: string;
@@ -13,6 +13,10 @@ interface BlogPost {
   date: string;
   featured: boolean;
   slug: string;
+}
+
+interface BlogProps {
+  onClose: () => void;
 }
 
 const blogPosts: BlogPost[] = [
@@ -42,6 +46,18 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: '3',
+    title: 'Getting Started with Node.js & Express',
+    excerpt: 'A beginner-friendly guide to building RESTful APIs with Node.js, Express, and MongoDB.',
+    image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&q=80',
+    category: 'Backend',
+    tags: ['Node.js', 'Express', 'MongoDB'],
+    readTime: '10 min read',
+    date: 'Jan 20, 2025',
+    featured: false,
+    slug: 'nodejs-express-guide',
+  },
+  {
+    id: '4',
     title: 'Getting Started with Node.js & Express',
     excerpt: 'A beginner-friendly guide to building RESTful APIs with Node.js, Express, and MongoDB.',
     image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&q=80',
@@ -84,12 +100,12 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
       <div
         className={[
           'relative overflow-hidden rounded-2xl bg-white/[0.02] backdrop-blur-lg',
-          'border border-white/[0.06] transition-all duration-500 h-full flex flex-col',
-          hovered ? '-translate-y-2 shadow-[0_0_30px_rgba(255,255,255,0.1)] border-white/25' : '',
+          'border border-blue-400/10 transition-all duration-500 h-full flex flex-col',
+          hovered ? '-translate-y-2 shadow-[0_0_30px_rgba(59,130,246,0.15)] border-blue-400/30' : '',
         ].join(' ')}
       >
         <div className="relative h-48 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
           <img
             src={post.image}
             alt={post.title}
@@ -100,7 +116,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
             ].join(' ')}
           />
           <div className="absolute top-3 left-3 z-20">
-            <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-white/10 border border-white/30 text-white">
+            <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-100">
               {post.category}
             </span>
           </div>
@@ -109,11 +125,11 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
         <div className="p-5 flex flex-col flex-1">
           <div className="flex items-center gap-3 text-[10px] text-slate-500 mb-3">
             <span className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
+              <Calendar className="w-3 h-3 text-blue-400/70" />
               {post.date}
             </span>
             <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" />
+              <Clock className="w-3 h-3 text-blue-400/70" />
               {post.readTime}
             </span>
           </div>
@@ -123,7 +139,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
 
           <div className="flex flex-wrap gap-1.5 mb-4">
             {post.tags.map((tag) => (
-              <span key={tag} className="flex items-center gap-1 px-2 py-0.5 text-[10px] rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-500">
+              <span key={tag} className="flex items-center gap-1 px-2 py-0.5 text-[10px] rounded-md bg-blue-500/10 border border-blue-400/15 text-blue-300">
                 <Tag className="w-2.5 h-2.5" />
                 {tag}
               </span>
@@ -134,7 +150,7 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
             href={`#${post.slug}`}
             className={[
               'inline-flex items-center gap-2 text-xs font-medium transition-all duration-300 w-fit',
-              hovered ? 'text-white gap-3' : 'text-slate-400',
+              hovered ? 'text-blue-200 gap-3' : 'text-slate-400',
             ].join(' ')}
           >
             Read Article
@@ -146,19 +162,41 @@ const BlogCard = memo(function BlogCard({ post, index }: { post: BlogPost; index
   );
 });
 
-const BlogSection = memo(function BlogSection() {
+const BlogSection = memo(function BlogSection({ onClose }: BlogProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const isInView = useInView(sectionRef, { margin: '-100px' });
   const featured = useMemo(() => blogPosts.find(p => p.featured), []);
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') onClose();
+  }, [onClose]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
   return (
-    <section
+    <motion.section
       id="blog"
       ref={sectionRef}
-      className="relative bg-black overflow-hidden py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
+      className="fixed inset-0 z-40 bg-black overflow-y-auto pt-24 md:pt-28 pb-16 md:pb-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       aria-label="Blog"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-white/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/5 w-96 h-96 bg-indigo-500/10 blur-[130px] rounded-full pointer-events-none" />
+
+      <button
+        onClick={onClose}
+        className="fixed top-24 md:top-28 right-5 z-40 w-11 h-11 rounded-full bg-[#101a33] border border-blue-400/20 flex items-center justify-center text-blue-200 hover:text-white hover:border-blue-400/50 hover:bg-blue-500/10 transition-all duration-300"
+        aria-label="Close blog"
+      >
+        <X className="w-5 h-5" />
+      </button>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl xl:max-w-7xl">
         <motion.div
@@ -167,20 +205,18 @@ const BlogSection = memo(function BlogSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-white" />
-            <span className="text-white text-[10px] font-bold tracking-[0.15em] uppercase">Blog</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            <span className="text-blue-200 text-[10px] font-bold tracking-[0.15em] uppercase">Blog</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Latest{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">Articles</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white">Articles</span>
           </h2>
           <p className="text-slate-400 text-base max-w-lg">
             Thoughts, tutorials, and insights on software development and technology.
           </p>
         </motion.div>
-
-
 
         {featured && (
           <motion.div
@@ -189,8 +225,8 @@ const BlogSection = memo(function BlogSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <span className="text-[10px] font-bold tracking-widest uppercase text-white/60 mb-4 block">Featured Article</span>
-            <div className="group relative rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+            <span className="text-[10px] font-bold tracking-widest uppercase text-blue-300/80 mb-4 block">Featured Article</span>
+            <div className="group relative rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-blue-400/10 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-blue-400/30 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-64 md:h-full overflow-hidden">
                   <img
@@ -209,10 +245,10 @@ const BlogSection = memo(function BlogSection() {
                   <p className="text-slate-400 text-sm leading-relaxed mb-4">{featured.excerpt}</p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {featured.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 text-[10px] rounded-md bg-white/[0.04] border border-white/[0.06] text-slate-500">{tag}</span>
+                      <span key={tag} className="px-2 py-0.5 text-[10px] rounded-md bg-blue-500/10 border border-blue-400/15 text-blue-300">{tag}</span>
                     ))}
                   </div>
-                  <a href={`#${featured.slug}`} className="inline-flex items-center gap-2 text-xs font-medium text-white group-hover:gap-3 transition-all duration-300">
+                  <a href={`#${featured.slug}`} className="inline-flex items-center gap-2 text-xs font-medium text-blue-300 group-hover:gap-3 transition-all duration-300 group-hover:text-white">
                     Read Full Article <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -242,7 +278,7 @@ const BlogSection = memo(function BlogSection() {
             >
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.03] border border-white/[0.08] text-sm font-medium text-slate-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/[0.03] border border-blue-400/10 text-sm font-medium text-slate-300 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/5 transition-all duration-300 group"
               >
                 View All Articles
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -255,20 +291,20 @@ const BlogSection = memo(function BlogSection() {
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center py-20 text-center"
           >
-            <BookOpen className="w-16 h-16 text-slate-700 mb-4" />
+            <BookOpen className="w-16 h-16 text-blue-500/60 mb-4" />
             <h3 className="text-white font-semibold text-lg mb-2">No Articles Yet</h3>
             <p className="text-slate-500 text-sm max-w-sm mb-6">
               I'm working on some exciting content. Stay tuned for articles about development, design, and technology.
             </p>
             <div className="relative">
-              <span className="px-4 py-2 text-xs font-semibold rounded-full bg-white/10 border border-white/30 text-white animate-pulse">
+              <span className="px-4 py-2 text-xs font-semibold rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-200 animate-pulse">
                 Coming Soon
               </span>
             </div>
           </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 });
 

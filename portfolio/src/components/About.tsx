@@ -199,7 +199,7 @@ const AboutSection = () => {
               </div>
 
               <img
-                src="/Image/AboutPage.jpeg"
+                src="/images/AboutPage.jpeg"
                 alt="Profile photo of Pulindu Godage"
                 className="relative z-10 w-full h-auto max-h-[350px] md:max-h-[450px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl"
               />

@@ -1,8 +1,10 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
+  
   ArrowRight, Download, Briefcase, FolderCheck, Smile,
 } from 'lucide-react';
+import { FaLinkedin, FaMedium, FaFacebookF, FaYoutube } from 'react-icons/fa';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -205,20 +207,43 @@ const AboutSection = () => {
               />
 
               <div className="relative z-20 mt-4 sm:mt-6 flex items-center gap-3 border border-white/10 bg-black/50 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4">
-                <div className="flex -space-x-2.5">
-                  {[
-                    { label: 'QA', bg: '#3b82f6' },
-                    { label: 'FE', bg: '#f59e0b' },
-                    { label: 'UX', bg: '#ec4899' },
-                  ].map((chip) => (
-                    <span
-                      key={chip.label}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-[#050505] flex items-center justify-center text-[9px] font-bold text-white"
-                      style={{ backgroundColor: chip.bg }}
-                    >
-                      {chip.label}
-                    </span>
-                  ))}
+                <div className="flex items-center -space-x-2.5">
+                  <a
+                    href="https://www.linkedin.com/in/pulindu-dinal-godage/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="group relative hover:z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center text-[#0e76a8] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] hover:shadow-lg hover:shadow-[#0077b5]/40"
+                  >
+                    <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                  <a
+                    href="https://medium.com/@godagepulindu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Medium"
+                    className="group relative hover:z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center text-[#00b673] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:text-white hover:bg-[#00ab6c] hover:border-[#00ab6c] hover:shadow-lg hover:shadow-[#00ab6c]/40"
+                  >
+                    <FaMedium className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                  <a
+                    href="https://web.facebook.com/pulindu.dinal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="group relative hover:z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center text-[#3b82f6] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:text-white hover:bg-[#1877f2] hover:border-[#1877f2] hover:shadow-lg hover:shadow-[#1877f2]/40"
+                  >
+                    <FaFacebookF className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@PulinduGodage"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="group relative hover:z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white/10 bg-white/5 flex items-center justify-center text-[#ef4444] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:text-white hover:bg-[#ff0000] hover:border-[#ff0000] hover:shadow-lg hover:shadow-[#ff0000]/40"
+                  >
+                    <FaYoutube className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
                 </div>
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                   QA Engineer · Frontend Developer · UI/UX Designer

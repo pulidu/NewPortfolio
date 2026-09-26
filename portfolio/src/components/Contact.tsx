@@ -1,9 +1,17 @@
 import { memo, useState, useRef, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
-  Send, Mail, Phone, MapPin, CheckCircle, Loader2, Download, MessageSquare,
+  Send, Mail, Phone, MapPin, CheckCircle, Loader2, Download,
 } from 'lucide-react';
+import { SiFacebook, SiMedium, SiInstagram, SiTiktok, SiWhatsapp } from 'react-icons/si';
 import HeroRobot from './HeroRobot';
+
+const emailjsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
 
 const LinkedInIcon = () => (
   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -44,12 +52,16 @@ interface FormErrors {
 }
 
 const socialLinks = [
-  { icon: LinkedInIcon, label: 'LinkedIn', href: '#', color: 'hover:border-[#0077b5] hover:text-[#0077b5]' },
-  { icon: GithubIcon, label: 'GitHub', href: '#', color: 'hover:border-white hover:text-white' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@pulindu.dev', color: 'hover:border-white hover:text-white' },
-  { icon: TwitterIcon, label: 'Twitter', href: '#', color: 'hover:border-[#1DA1F2] hover:text-[#1DA1F2]' },
-  { icon: MessageSquare, label: 'Facebook', href: '#', color: 'hover:border-[#1877F2] hover:text-[#1877F2]' },
-  { icon: YoutubeIcon, label: 'YouTube', href: '#', color: 'hover:border-[#FF0000] hover:text-[#FF0000]' },
+  { icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/pulindu-dinal-godage/', color: 'hover:border-[#0077b5] hover:text-[#0077b5]' },
+  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/pulidu', color: 'hover:border-white hover:text-white' },
+  { icon: TwitterIcon, label: 'X', href: 'https://x.com/PulinduGodage', color: 'hover:border-[#1DA1F2] hover:text-[#1DA1F2]' },
+  { icon: SiFacebook, label: 'Facebook', href: 'https://web.facebook.com/pulindu.dinal', color: 'hover:border-[#1877F2] hover:text-[#1877F2]' },
+  { icon: YoutubeIcon, label: 'YouTube', href: 'https://www.youtube.com/@PulinduGodage', color: 'hover:border-[#FF0000] hover:text-[#FF0000]' },
+  { icon: SiMedium, label: 'Medium', href: 'https://medium.com/@godagepulindu', color: 'hover:border-[#00ab6c] hover:text-[#00ab6c]' },
+  { icon: SiInstagram, label: 'Instagram', href: 'https://www.instagram.com/pulindudinal?stkn=ZWtzbThoMXduZXN1', color: 'hover:border-[#E4405F] hover:text-[#E4405F]' },
+  { icon: SiTiktok, label: 'TikTok', href: 'https://www.tiktok.com/@pulindug_?_r=1&_t=ZS-99ridds9p9W', color: 'hover:border-[#25F4EE] hover:text-[#25F4EE]' },
+  { icon: Mail, label: 'Email', href: 'mailto:godagepulindu@gmail.com', color: 'hover:border-white hover:text-white' },
+  { icon: SiWhatsapp, label: 'WhatsApp', href: 'https://wa.me/94701317931', color: 'hover:border-[#25D366] hover:text-[#25D366]' },
 ];
 
 const containerVariants = {
@@ -117,11 +129,13 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
 
 const ContactSection = memo(function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const [form, setForm] = useState<FormData>({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sendError, setSendError] = useState('');
 
   const validate = useCallback((): boolean => {
     const errs: FormErrors = {};
@@ -137,6 +151,7 @@ const ContactSection = memo(function ContactSection() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
+    if (sendError) setSendError('');
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -145,11 +160,35 @@ const ContactSection = memo(function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+
+    const { serviceId, templateId, publicKey } = emailjsConfig;
+    if (!serviceId || !templateId || !publicKey) {
+      setSendError(
+        import.meta.env.DEV
+          ? 'EmailJS is not configured. Add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file.'
+          : 'Failed to send the message. Please try again.'
+      );
+      return;
+    }
+
     setSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitting(false);
-    setSubmitted(true);
-    setForm({ name: '', email: '', subject: '', message: '' });
+    setSendError('');
+    try {
+      await emailjs.sendForm(serviceId, templateId, formRef.current!, { publicKey });
+      formRef.current?.reset();
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setSubmitted(true);
+    } catch (err) {
+      console.error('EmailJS send failed:', {
+        name: (err as { name?: string })?.name,
+        status: (err as { status?: number })?.status,
+        text: (err as { text?: string })?.text,
+        message: (err as { message?: string })?.message,
+      });
+      setSendError('Failed to send the message. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -226,17 +265,26 @@ const ContactSection = memo(function ContactSection() {
               <h3 className="text-white font-semibold text-lg mb-4">Get in Touch</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: 'Email', value: 'hello@pulindu.dev' },
-                  { icon: Phone, label: 'Phone', value: '+94 71 234 5678' },
-                  { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka' },
+                  { icon: Mail, label: 'Email', value: 'godagepulindu@gmail.com', href: 'mailto:godagepulindu@gmail.com' },
+                  { icon: Phone, label: 'Phone', value: '+94 70 131 7931', href: '' },
+                  { icon: MapPin, label: 'Location', value: 'Colombo, Sri Lanka', href: '' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
                       <item.icon className="w-4 h-4 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">{item.label}</p>
-                      <p className="text-slate-200 text-sm">{item.value}</p>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-slate-200 text-sm hover:text-white hover:underline underline-offset-4 transition-colors duration-300"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-slate-200 text-sm">{item.value}</p>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -254,30 +302,30 @@ const ContactSection = memo(function ContactSection() {
               <p className="text-slate-400 text-xs leading-relaxed mb-4">
                 I'm currently available for freelance projects, full-time positions, and interesting collaborations.
               </p>
-              <a
+              {/* <a
                 href="#"
                 className="inline-flex items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors duration-300"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Resume
-              </a>
+              </a> */}
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex gap-2 flex-wrap">
+            <motion.div variants={itemVariants} className="flex gap-2.5 flex-wrap">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
+                  {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className={[
-                    'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium',
+                    'w-10 h-10 rounded-xl flex items-center justify-center',
                     'bg-white/[0.02] border border-white/[0.06] text-slate-400',
                     'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(255,255,255,0.08)]',
                     link.color,
                   ].join(' ')}
                 >
-                  <link.icon className="w-3.5 h-3.5" />
-                  {link.label}
+                  <link.icon className="w-4 h-4" />
                 </a>
               ))}
             </motion.div>
@@ -301,7 +349,7 @@ const ContactSection = memo(function ContactSection() {
                 <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
                 <p className="text-slate-400 text-sm mb-6">Thank you for reaching out. I'll get back to you within 24 hours.</p>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => { setSubmitted(false); setSendError(''); }}
                   className="px-5 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-slate-300 hover:text-white transition-all duration-300"
                 >
                   Send Another Message
@@ -309,6 +357,7 @@ const ContactSection = memo(function ContactSection() {
               </motion.div>
             ) : (
               <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 className="rounded-2xl bg-white/[0.02] backdrop-blur-lg border border-white/[0.06] p-6 md:p-8 space-y-5"
               >
@@ -318,6 +367,10 @@ const ContactSection = memo(function ContactSection() {
                 </div>
                 <FloatingLabelInput label="Subject" name="subject" value={form.subject} error={errors.subject} onChange={handleChange} />
                 <FloatingLabelInput label="Your Message" name="message" value={form.message} error={errors.message} onChange={handleChange} isTextarea />
+
+                {sendError && (
+                  <p role="alert" className="text-red-400/90 text-xs text-center px-2">{sendError}</p>
+                )}
 
                 <button
                   type="submit"

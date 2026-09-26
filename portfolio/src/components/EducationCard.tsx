@@ -15,6 +15,7 @@ interface EducationItem {
   badge: string;
   icon: keyof typeof iconMap;
   logo: string;
+  logoPlate?: boolean;
   description: string;
 }
 
@@ -65,7 +66,11 @@ export default function EducationCard({ item }: EducationCardProps) {
                 <img
                   src={item.logo}
                   alt={item.institute}
-                  className="w-6 h-6 object-contain rounded flex-shrink-0"
+                  className={
+                    item.logoPlate
+                      ? 'h-6 sm:h-7 md:h-8 w-auto aspect-[288/80] object-cover rounded flex-shrink-0'
+                      : 'h-4 sm:h-5 md:h-6 w-auto max-w-full object-contain flex-shrink-0'
+                  }
                   onError={(e) => {
                     (e.target as HTMLImageElement).style.display = 'none';
                   }}

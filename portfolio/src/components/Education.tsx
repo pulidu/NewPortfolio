@@ -13,6 +13,7 @@ interface EducationItem {
   badge: string;
   icon: 'GraduationCap' | 'BookOpen' | 'Award';
   logo: string;
+  logoPlate?: boolean;
   description: string;
 }
 
@@ -24,7 +25,7 @@ const educationData: EducationItem[] = [
     year: '2024 \u2013 Present',
     badge: 'Higher National Diploma',
     icon: 'GraduationCap',
-    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=IJSE&font=inter',
+    logo: '/Images/ijselogo-mark.png',
     description:
       'Focusing on enterprise application development, advanced Java concepts, full-stack web architecture, and database management systems.',
   },
@@ -35,7 +36,8 @@ const educationData: EducationItem[] = [
     year: '2023 \u2013 2024',
     badge: 'Diploma',
     icon: 'BookOpen',
-    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=NIBM&font=inter',
+    logo: '/Images/nibmlogo.jpg',
+    logoPlate: true,
     description:
       'Comprehensive study of information technology fundamentals, programming principles, networking, and modern computing systems.',
   },
@@ -46,7 +48,8 @@ const educationData: EducationItem[] = [
     year: '2022 \u2013 2023',
     badge: 'Certificate',
     icon: 'Award',
-    logo: 'https://placehold.co/64x64/0B1120/ffffff?text=NIBM&font=inter',
+    logo: '/Images/nibmlogo.jpg',
+    logoPlate: true,
     description:
       'Foundation in information and communication technology, including computer applications, MS Office tools, and introductory programming.',
   },

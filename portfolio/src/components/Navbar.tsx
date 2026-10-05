@@ -89,7 +89,6 @@ export default function Navbar({ onBlogClick, showBlog, onBlogClose }: NavbarPro
           ? 'bg-black/80 backdrop-blur-2xl shadow-lg shadow-black/20 border-b border-white/[0.03]'
           : 'bg-transparent'
       }`}
-      role="navigation"
       aria-label="Main navigation"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">

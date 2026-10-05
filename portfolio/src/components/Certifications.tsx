@@ -20,48 +20,131 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: '1',
-    title: 'Meta Front-End Developer',
-    issuer: 'Meta (Coursera)',
-    issueDate: 'Mar 2025',
-    credentialId: 'ABC123XYZ',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80',
+    title: 'Network Security & Database Vulnerabilities',
+    issuer: 'IBM SkillsBuild',
+    issueDate: 'Jul 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 1.png',
   },
   {
     id: '2',
-    title: 'AWS Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    issueDate: 'Jan 2025',
-    credentialId: 'AWS-CP-2025-001',
-    image:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80',
+    title: 'OAuth 2.0 Fundamentals',
+    issuer: 'Kaggle',
+    issueDate: 'Jul 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 2.png',
   },
   {
     id: '3',
-    title: 'Google UX Design',
-    issuer: 'Google (Coursera)',
-    issueDate: 'Nov 2024',
-    credentialId: 'GUX-2024-567',
-    image:
-      'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&q=80',
+    title: 'Enterprise Design Thinking Practitioner',
+    issuer: 'IBM',
+    issueDate: 'Mar 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 3.png',
   },
   {
     id: '4',
-    title: 'MongoDB Associate Developer',
-    issuer: 'MongoDB University',
-    issueDate: 'Sep 2024',
-    credentialId: 'MDB-DEV-890',
-    image:
-      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&q=80',
+    title: 'Enterprise Design Thinking Team Essentials',
+    issuer: 'IBM',
+    issueDate: 'Mar 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 4.png',
   },
   {
     id: '5',
-    title: 'JavaScript Algorithms & Data Structures',
-    issuer: 'freeCodeCamp',
-    issueDate: 'Jul 2024',
-    credentialId: 'FCC-JS-2024-123',
-    image:
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80',
+    title: 'Introduction to Cybersecurity',
+    issuer: 'Cisco Networking Academy',
+    issueDate: 'Mar 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 5.png',
+  },
+  {
+    id: '6',
+    title: 'Partner Training - GitHub Copilot',
+    issuer: 'Microsoft',
+    issueDate: 'Mar 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 6.png',
+  },
+  {
+    id: '7',
+    title: 'Cloud Foundations',
+    issuer: 'AWS Academy',
+    issueDate: 'Feb 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 7.png',
+  },
+  {
+    id: '8',
+    title: 'Cybersecurity Essentials',
+    issuer: 'Cisco Networking Academy',
+    issueDate: 'Feb 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 8.png',
+  },
+  {
+    id: '9',
+    title: 'JavaScript Essentials 1 (JSE)',
+    issuer: 'Cisco Networking Academy',
+    issueDate: 'Feb 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 9.png',
+  },
+  {
+    id: '10',
+    title: 'Database Design and Programming with SQL',
+    issuer: 'Oracle Academy',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 10.png',
+  },
+  {
+    id: '11',
+    title: 'IT Essentials',
+    issuer: 'Cisco Networking Academy',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 11.png',
+  },
+  {
+    id: '12',
+    title: 'Getting Started with Cloud for AWS',
+    issuer: 'AWS Educate',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 12.png',
+  },
+  {
+    id: '13',
+    title: 'Introduction to Databases',
+    issuer: 'Meta (Coursera)',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 13.png',
+  },
+  {
+    id: '14',
+    title: 'Version Control',
+    issuer: 'Meta (Coursera)',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 14.png',
+  },
+  {
+    id: '15',
+    title: 'Programming with JavaScript',
+    issuer: 'Meta (Coursera)',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 15.png',
+  },
+  {
+    id: '16',
+    title: 'HTML and CSS in Depth',
+    issuer: 'Meta (Coursera)',
+    issueDate: 'Jan 2025',
+    credentialId: 'N/A',
+    image: '/Certificate 16.png',
   },
 ];
 
@@ -191,6 +274,8 @@ function CertViewer({
             <img
               src={cert.image}
               alt={cert.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-contain"
             />
           </div>

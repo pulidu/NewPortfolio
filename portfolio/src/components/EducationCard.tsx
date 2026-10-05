@@ -66,6 +66,7 @@ export default function EducationCard({ item }: EducationCardProps) {
                 <img
                   src={item.logo}
                   alt={item.institute}
+                  decoding="async"
                   className={
                     item.logoPlate
                       ? 'h-6 sm:h-7 md:h-8 w-auto aspect-[288/80] object-cover rounded flex-shrink-0'

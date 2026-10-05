@@ -97,6 +97,7 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
   return (
     <div className="relative">
       <InputTag
+        id={name}
         name={name}
         type={isTextarea ? undefined : type}
         value={value}
@@ -112,8 +113,11 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
           isTextarea ? 'resize-none' : '',
         ].join(' ')}
         aria-label={label}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${name}-error` : undefined}
       />
       <label
+        htmlFor={name}
         className={[
           'absolute left-4 transition-all duration-300 pointer-events-none',
           isFloating ? 'top-2 text-[10px] text-white/70' : 'top-1/2 -translate-y-1/2 text-sm text-slate-500',
@@ -122,7 +126,11 @@ const FloatingLabelInput = memo(function FloatingLabelInput({
       >
         {label}
       </label>
-      {error && <p className="text-red-400/80 text-[10px] mt-1.5 px-1">{error}</p>}
+      {error && (
+        <p id={`${name}-error`} className="text-red-400/80 text-[10px] mt-1.5 px-1">
+          {error}
+        </p>
+      )}
     </div>
   );
 });

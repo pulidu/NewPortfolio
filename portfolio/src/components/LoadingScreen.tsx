@@ -143,7 +143,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
 
             {/* Texts */}
             <div className="flex flex-col items-center gap-1.5">
-              <motion.h1
+              <motion.p
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
                 }}
               >
                 Pulindu Godage
-              </motion.h1>
+              </motion.p>
               <motion.p
                 className="text-xs md:text-sm text-white/70 tracking-[0.2em] uppercase"
                 initial={{ opacity: 0, y: 20 }}

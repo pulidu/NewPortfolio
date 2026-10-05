@@ -120,14 +120,14 @@ const CategoryTitle = memo(function CategoryTitle({
       >
         <Icon className="w-4 h-4 text-white" />
       </motion.div>
-      <motion.h2
+      <motion.h3
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
         className="text-[10px] font-bold tracking-[0.15em] text-slate-400 uppercase shrink-0"
       >
         {label}
-      </motion.h2>
+      </motion.h3>
       <div className="h-[1px] flex-grow relative overflow-hidden">
         <motion.div
           initial={{ scaleX: 0 }}
@@ -269,7 +269,7 @@ const SkillsSection = memo(function SkillsSection() {
                 My Skills
               </motion.div>
 
-              <motion.h1
+              <motion.h2
                 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -281,7 +281,7 @@ const SkillsSection = memo(function SkillsSection() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-white">
                   I Work With
                 </span>
-              </motion.h1>
+              </motion.h2>
 
               <motion.p
                 className="text-slate-400 text-base md:text-lg leading-relaxed max-w-sm"

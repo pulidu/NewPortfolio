@@ -74,7 +74,7 @@ const AboutSection = () => {
             About Me
           </motion.div>
 
-          <motion.h1
+          <motion.h2
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] mb-6 md:mb-8 lg:mb-10"
             style={{ textShadow: '0 0 60px rgba(255,255,255,0.06)' }}
@@ -85,7 +85,7 @@ const AboutSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-white to-gray-400">
               Purpose.
             </span>
-          </motion.h1>
+          </motion.h2>
 
           <motion.div
             variants={itemVariants}
@@ -203,6 +203,10 @@ const AboutSection = () => {
               <img
                 src="/Images/AboutPage.jpeg"
                 alt="Profile photo of Pulindu Godage"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="1311"
                 className="relative z-10 w-full h-auto max-h-[350px] md:max-h-[450px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl"
               />
 

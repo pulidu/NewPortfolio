@@ -95,7 +95,7 @@ export default function HeroSection() {
           Pulindu Godage
         </motion.h1>
 
-        <motion.h4
+        <motion.p
           variants={itemVariants}
           className="mt-4 md:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight min-h-[1.2em]"
         >
@@ -103,7 +103,7 @@ export default function HeroSection() {
             {displayedText}
           </span>
           <span className="inline-block w-1 bg-white ml-1 animate-pulse" style={{ height: '0.8em' }} />
-        </motion.h4>
+        </motion.p>
 
         <motion.p
           variants={itemVariants}

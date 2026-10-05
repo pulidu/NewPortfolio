@@ -15,6 +15,8 @@ interface Certification {
   issueDate: string;
   credentialId: string;
   image: string;
+  description?: string;
+  skills?: string[];
 }
 
 const certifications: Certification[] = [
@@ -25,6 +27,8 @@ const certifications: Certification[] = [
     issueDate: 'Jul 2025',
     credentialId: 'N/A',
     image: '/Certificate 1.png',
+    description: 'Explored network security principles and identified common database vulnerabilities and mitigation techniques.',
+    skills: ['Network Security', 'Database Security', 'Vulnerability Assessment', 'Threat Mitigation', 'Cybersecurity'],
   },
   {
     id: '2',
@@ -33,6 +37,8 @@ const certifications: Certification[] = [
     issueDate: 'Jul 2025',
     credentialId: 'N/A',
     image: '/Certificate 2.png',
+    description: 'Gained foundational knowledge of OAuth 2.0 authorization framework and its real-world applications.',
+    skills: ['OAuth 2.0', 'Authentication', 'Authorization', 'API Security', 'Web Security'],
   },
   {
     id: '3',
@@ -41,6 +47,8 @@ const certifications: Certification[] = [
     issueDate: 'Mar 2025',
     credentialId: 'N/A',
     image: '/Certificate 3.png',
+    description: 'Applied IBM Enterprise Design Thinking framework to solve real-world problems with a user-centered, iterative approach.',
+    skills: ['Design Thinking', 'User-Centered Design', 'Problem Solving', 'Ideation', 'Prototyping'],
   },
   {
     id: '4',
@@ -49,6 +57,8 @@ const certifications: Certification[] = [
     issueDate: 'Mar 2025',
     credentialId: 'N/A',
     image: '/Certificate 4.png',
+    description: 'Collaborated effectively in cross-functional teams using IBM Design Thinking principles and practices.',
+    skills: ['Team Collaboration', 'Design Thinking', 'User Research', 'Agile Mindset', 'Stakeholder Alignment'],
   },
   {
     id: '5',
@@ -57,6 +67,8 @@ const certifications: Certification[] = [
     issueDate: 'Mar 2025',
     credentialId: 'N/A',
     image: '/Certificate 5.png',
+    description: 'Fundamentals of cybersecurity, including threats, vulnerabilities, and basic protection strategies.',
+    skills: ['Cybersecurity Fundamentals', 'Network Security', 'Threats & Vulnerabilities', 'Risk Management', 'Security Best Practices'],
   },
   {
     id: '6',
@@ -65,6 +77,8 @@ const certifications: Certification[] = [
     issueDate: 'Mar 2025',
     credentialId: 'N/A',
     image: '/Certificate 6.png',
+    description: 'Learned to leverage GitHub Copilot to enhance developer productivity and streamline coding workflows.',
+    skills: ['GitHub Copilot', 'AI-Assisted Coding', 'Developer Productivity', 'Code Generation', 'Workflow Automation'],
   },
   {
     id: '7',
@@ -73,6 +87,8 @@ const certifications: Certification[] = [
     issueDate: 'Feb 2025',
     credentialId: 'N/A',
     image: '/Certificate 7.png',
+    description: 'Built foundational knowledge of AWS cloud services, architecture, and core concepts.',
+    skills: ['AWS Cloud', 'Cloud Computing', 'Cloud Architecture', 'Infrastructure', 'Scalability'],
   },
   {
     id: '8',
@@ -81,6 +97,8 @@ const certifications: Certification[] = [
     issueDate: 'Feb 2025',
     credentialId: 'N/A',
     image: '/Certificate 8.png',
+    description: 'Covered essential cybersecurity concepts, including security principles, encryption, and threat defense.',
+    skills: ['Cybersecurity', 'Encryption', 'Network Defense', 'Security Operations', 'Threat Analysis'],
   },
   {
     id: '9',
@@ -89,6 +107,8 @@ const certifications: Certification[] = [
     issueDate: 'Feb 2025',
     credentialId: 'N/A',
     image: '/Certificate 9.png',
+    description: 'Developed core JavaScript programming skills including syntax, data types, and control structures.',
+    skills: ['JavaScript', 'Programming', 'Web Development', 'Algorithms', 'Problem Solving'],
   },
   {
     id: '10',
@@ -97,6 +117,8 @@ const certifications: Certification[] = [
     issueDate: 'Jan 2025',
     credentialId: 'N/A',
     image: '/Certificate 10.png',
+    description: 'Learned relational database design, normalization, and SQL querying techniques.',
+    skills: ['SQL', 'Database Design', 'Relational Databases', 'Data Modeling', 'Query Optimization'],
   },
   {
     id: '11',
@@ -105,6 +127,8 @@ const certifications: Certification[] = [
     issueDate: 'Jan 2025',
     credentialId: 'N/A',
     image: '/Certificate 11.png',
+    description: 'Gained knowledge of computer hardware, software, networking, and troubleshooting fundamentals.',
+    skills: ['IT Fundamentals', 'Hardware', 'Software', 'Networking', 'Troubleshooting'],
   },
   {
     id: '12',
@@ -113,6 +137,8 @@ const certifications: Certification[] = [
     issueDate: 'Jan 2025',
     credentialId: 'N/A',
     image: '/Certificate 12.png',
+    description: 'Introduction to AWS cloud concepts, services, and getting started with cloud computing.',
+    skills: ['AWS', 'Cloud Computing', 'Cloud Services', 'AWS Basics', 'Cloud Concepts'],
   },
   // {
   //   id: '13',
@@ -281,7 +307,7 @@ function CertViewer({
           </div>
 
           {/* Details bar */}
-          <div className="p-5 sm:p-6">
+          <div className="p-5 sm:p-6 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="min-w-0">
                 <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
@@ -308,6 +334,23 @@ function CertViewer({
                 </a>
               </div>
             </div>
+            {cert.description && (
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {cert.description}
+              </p>
+            )}
+            {cert.skills && cert.skills.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.06]">
+                {cert.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="text-[11px] px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/[0.08]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
